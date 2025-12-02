@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # **30_vue的性能优化怎么做**
+
+            1.编码优化
+            
+                不要把所有数据都放在data中
+            
+                v-for时给每个元素绑定事件用事件代理
+            
+                keep-alive缓存组件
+            
+                分组件，提高复用性、维护性
+            
+                key值要保证唯一
+            
+                路由懒加载，异步组件
+            
+                数据持久化存储的使用尽量用防抖、节流优化
+            
+            2.加载优化
+            
+                按需加载
+            
+                内容懒加载
+            
+                图片懒加载
+            
+            3.用户体验
+            
+                骨架屏
+            
+            4.SEO优化
+            
+                预渲染服务端
+            
+                渲染ssr
+            
+            5.打包优化
+            
+                CDN形式加载第三方模块
+            
+                多线程打包
+            
+                抽离公共文件
+            
+            6.缓存和压缩
+            
+                客户端缓存
+            
+                服务端缓存
+            
+                服务端Gzip压缩
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let jq = $;
+        jq(() => {
+
+        })//
+
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

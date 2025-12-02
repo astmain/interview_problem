@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 19_vue的双向数据绑定原理是什么
+
+            通过数据劫持和发布订阅者模式来实现，同时利用object.defineProperty（）劫持各个属性的setter和getter，
+            
+            在数据发生改变的时候发布消息给订阅者,触发对应的监听回调渲染视图,也就是说数据和视图时同步的,数据发生改变,视图跟着发生改变,视图改变,数据也会发生改变。
+            
+            第一步:需要observer的数据对象进行递归遍历,包括子属性对象的属性,都加上setter和getter
+            
+            第二步: compile模板解析指令,把模板中的变量替换成数据,然后初始化渲染视图,同时把每个指令对应的节点绑定上更新函数,添加订阅者,如果数据变化,收到通知,更新视图
+            
+            第三步: watcher订阅者是Observer和Compile之间的通信桥梁,作用:
+            
+                1.在自身实例化的时候忘订阅器内添加自己
+            
+                2.自身要有一个update()方法
+            
+                3.等待属性变动时,调用自身的update方法,触发compile这种的回调
+            
+            第四步:**MVVM作为数据绑定的入口,整合了observer、compile和watcher三者,通过observer来监听自己的数据变化,通过compile解析模板指令,最后利用watcher把observer和compile联系起来,最终达到数据**更新视图更新,视图更新数据更新的效果
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let jq = $;
+        jq(() => {
+
+        })//
+
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

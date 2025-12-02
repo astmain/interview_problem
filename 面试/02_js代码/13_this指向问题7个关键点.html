@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 13_this指向问题7个关键点
+            1,全局对象中的this  :  指向的是window
+            2,全局作用域或者普通函数中的this  :  指向全局window
+            3,this永远指向最后调用它的那个对象  :  在不是箭头函数的情况下
+            4,new 关键词  :  改变了this的指向
+            5,apply,call,bind  :  可以改变this指向，不是箭头函数
+            6,箭头函数中的this  :1它的指向在定义的时候就已经确定了,2箭头函数它没有this,看外层是否有函数,有就是外层函数的this,没有就是window
+            7,匿名函数中的this  :  永远指向了window,匿名函数的执行环境具有全局性,因此this指向window
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

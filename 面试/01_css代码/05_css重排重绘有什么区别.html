@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <DL id="root">
+
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+### 05_css重排重绘有什么区别
+重排:(回流)布局引擎会根据所有的样式计算出盒模型在页面上的位置和大小
+重绘:计算好盒模型的位置、大小和其他一些属性之后,浏览器就会根据每个盒模型的特性进行绘制浏览器的渲染机制
+重排===对DOM的大小、位置进行修改后，浏览器需要重新计算元素的这些几何属性，就叫重排
+重绘===对DOM的样式进行修改，比如color和background，浏览器不需要重新计算几何属性的时,直接绘制该元素的新样式,这里就只触发了重绘
+        </textarea>
+        <img style="width: 700px;height: 350px;"
+            src="https://img1.baidu.com/it/u=2789601056,3626396764&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=271">
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_=======:`, 3)
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

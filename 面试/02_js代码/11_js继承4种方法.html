@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            //方法1_原型链继承
+            //说明: 让一个构造函数的原型是另一个类型的实例，那么这个构造函数new出来的实例就具有该实例的属性。
+            //优点：写法方便简洁，容易理解。
+            //缺点：对象实例共享所有继承的属性和方法。无法向父类构造函数传参。
+
+            //方法2_借用构造函数继承
+            //说明: 子类型构造函数的内使用 apply()或call()方法将父对象的构造函数绑定在子对象上。
+            //优点：解决了原型链实现继承的不能传参的问题和父类的原型共享的问题。
+            //缺点：借用构造函数的缺点是方法都在构造函数中定义，因此无法实现函数复用。在父类型的原型中定义的方法,对子类型而言也是不可见的,结果所有类型都只能使用构造函数模式。
+            
+
+            //方法3_组合继承
+            //说明: 原型链 和 借用构造函数 的组合到一块.
+            //优点：就是解决了原型链继承和借用构造函数继承造成的影响。
+            //缺点：是无论在什么情况下，都会调用两次父类构造函数：一次是在创建子类原型的时候，另一次是在子类构造函数内部
+
+            //方法4_Class继承
+            //Class通过extends关键字实现继承，
+            //     其实质是先创造出父类的this对象，然后用子类的构造函数修改this·
+            //子类的构造方法中必须调用super方法，且只有在调用了super()之后才能使用this，
+            //     因为子类的this对象是继承父类的this对象,然后对其进行加工,
+            //     而super方法表示的是父类的构造函数,用来新建父类的this对象
+            //优点:语法简单易懂,操作更方便。
+            //缺点:并不是所有的浏览器都支持class关键字
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_原型链继承()">方法1_原型链继承</el-button>
+        <el-button type="primary" size="mini" @click="方法2_借用构造函数继承()">方法2_借用构造函数继承</el-button>
+        <el-button type="primary" size="mini" @click="方法3_组合继承()">方法3_组合继承</el-button>
+        <el-button type="primary" size="mini" @click="方法4_Class继承()">方法4_Class继承</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_原型链继承() {
+                    // 方法1_原型链继承
+                    // 说明: 让一个构造函数的原型是另一个类型的实例，那么这个构造函数new出来的实例就具有该实例的属性。
+                    // 优点：写法方便简洁，容易理解。
+                    // 缺点：对象实例共享所有继承的属性和方法。无法向父类构造函数传参。
+                    function Parent() {
+                        this.isShow = true
+                        this.msg = { name: "张三", age: 18 }
+
+                    }
+                    Parent.prototype.get_info = function () {
+                        console.log(`${1}>get_info.isShow`, this.isShow)
+                        console.log(`${1}>get_info.msg`, this.msg)
+                    }
+
+                    function Child() { }
+                    Child.prototype = new Parent()
+                    let c1 = new Child()
+                    c1.msg.name = "李四"
+                    c1.msg.gender = "男"
+                    c1.get_info() //true    {name: '李四', age: 18, gender: '男'}
+
+                }, //
+
+                async 方法2_借用构造函数继承() {
+                    //方法2_借用构造函数继承
+                    //说明: 子类型构造函数的内使用 apply()或call()方法将父对象的构造函数绑定在子对象上。
+                    //优点：解决了原型链实现继承的不能传参的问题和父类的原型共享的问题。
+                    //缺点：借用构造函数的缺点是方法都在构造函数中定义，因此无法实现函数复用。在父类型的原型中定义的方法,对子类型而言也是不可见的,结果所有类型都只能使用构造函数模式。
+                    function Parent(gender) {
+                        console.log("Parent执行次数======")
+                        this.msg = { name: "张三", age: 18, gender: gender }
+                    }
+
+                    function Child(gender) {
+                        Parent.call(this, "男")
+                    }
+
+                    let c1 = new Child("男")
+                    c1.msg.nickname = "小张"
+                    console.log(c1.msg)
+
+                    let c2 = new Child("女")
+                    console.log(c2.msg)
+                },//
+
+                async 方法3_组合继承() {
+                    //方法3_组合继承
+                    //说明: 原型链 和 借用构造函数 的组合到一块.
+                    //优点：就是解决了原型链继承和借用构造函数继承造成的影响。
+                    //缺点：是无论在什么情况下，都会调用两次父类构造函数：一次是在创建子类原型的时候，另一次是在子类构造函数内部
+                    function Parent(gender) {
+                        this.msg = { name: "张三", age: 18, gender: gender }
+                    }
+                    Parent.prototype.get_info = function () {
+                        console.log(`${1}>get_info.isShow`, this.isShow)
+                        console.log(`${1}>get_info.msg`, this.msg)
+                    }
+
+                    function Child(gender) {
+                        Parent.call(this, gender)
+                    }
+                    Child.prototype = new Parent()
+
+
+                    let c1 = new Child("男")
+                    c1.msg.name = "李四"
+                    c1.get_info()
+                    console.log(c1.msg)
+
+                    let c2 = new Child("女")
+                    console.log(c2.msg)
+
+
+                },//
+
+                async 方法4_Class继承() {
+                    //方法4_Class继承
+                    //Class通过extends关键字实现继承，
+                    //     其实质是先创造出父类的this对象，然后用子类的构造函数修改this·
+                    //子类的构造方法中必须调用super方法，且只有在调用了super（)之后才能使用this，
+                    //     因为子类的this对象是继承父类的this对象,然后对其进行加工,
+                    //     而super方法表示的是父类的构造函数,用来新建父类的this对象
+                    //优点:语法简单易懂,操作更方便。
+                    //缺点:并不是所有的浏览器都支持class关键字
+                    class Animal {
+                        constructor(kind) {
+                            this.kind = kind
+                        }
+                        get_info() {
+
+                            return this.kind
+                        }
+                    }
+
+
+                    class Cat extends Animal {
+                        constructor(name) {
+                            super("猫")
+                            this.name = name
+                        }
+                        get_info_cat() {
+                            let parent_constructor_kind = super.get_info()
+                            console.log(this.name + ":=== " + parent_constructor_kind)
+
+                        }
+                    }
+
+
+                    let cat1 = new Cat("小白")
+                    cat1.get_info_cat()
+
+
+
+
+                },//
+
+
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

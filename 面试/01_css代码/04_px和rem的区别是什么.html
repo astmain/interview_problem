@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        .盒子1_浏览器默认16px {
+            /* 浏览器默认16px */
+            font-size: 16px;
+        }
+
+        .盒子2_1rem {
+            /* 浏览器默认16px */
+            font-size: 1rem;
+        }
+    </style>
+
+<body>
+    <DL id="root">
+
+        <textarea class="笔记" style="width: 100vw;height: 200px;background: grey;">
+            16px*62.5%=10px
+        </textarea>
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+        <div class="盒子1_浏览器默认16px">盒子1_浏览器默认16px</div>
+        <div class="盒子2_1rem">盒子2_1rem</div>
+
+
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_=======:`, 3)
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

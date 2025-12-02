@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 35_HTTP协议规定的协议头和请求头有什么
+            1.请求头信息：
+                Accept:浏览器告诉服务器所支持的数据类型
+                Host:浏览器告诉服务器我想访问服务器的哪台主机
+                Referer:浏览器告诉服务器我是从哪里来的(防盗链)
+                User-Agent:浏览器类型、版本信息
+                Date:浏览器告诉服务器我是什么时候访问的
+                Connection:连接方式
+                Content-Type：指定请求体的MIME类型，例如application/json、application/x-www-form-urlencoded等。
+                Cookie:指定请求的Cookie信息，用于跟踪用户会话。
+                Cache-Control：指定请求或响应的缓存策略，例如max-age、no-cache、no-store等
+                X-Request-With：请求方式,例如XMLHttpRequest。
+                Accept-Encoding：指定客户端能够接受的编码方式，例如gzip、deflate等。
+            2.响应头信息：
+                Location:这个就是告诉浏览器你要去找谁
+                Server:告诉浏览器服务器的类型
+                Content-Type:告诉浏览器返回的数据类型,指定请求体的MIME类型，例如application/json、application/x-www-form-urlencoded等。
+                Refresh：控制了的定时刷新
+            
+            .
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

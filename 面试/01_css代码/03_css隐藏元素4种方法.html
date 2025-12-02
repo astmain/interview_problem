@@ -1,0 +1,69 @@
+<meta charset="UTF-8">
+<title>demo</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .隐藏元素 {
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin: 0 auto;
+        padding: 10px;
+        border: 3px solid black;
+        /* display: none; */
+
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+
+    }
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+        <textarea class="笔记" style="width: 100vw;height: 200px;background: grey;">
+            ### 03_css隐藏元素4种方法
+            display:none        ;元素在页面上消失,不占据空间位置
+            opacity:0           ;设置元素透明度为0,元素不可见,占据控件位置
+            visibility: hidden  ;元素在页面上消失,不占据空间位置
+            position: absolute  ;从当前位置,移动动到别的位置,还是可见
+            clip-path           ;元素剪切掉-修剪掉 掘金笔记      https://juejin.cn/post/7163075335058096141
+        </textarea>
+        <div class="隐藏元素">隐藏元素</div>
+
+
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_=======:`, 3)
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

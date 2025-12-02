@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 26_浏览器的4种存储方式
+            1.cookies
+            H5标准前的本地存储方式,兼容性好，请求头自带cookie
+            存储量小，资源浪费，使用麻烦(封装)
+            不能进行跨域，只能存储字符串
+            存储容量通常在4097
+        2.localstorage
+            H5加入的以键值对为标准的方式
+            操作方便，永久存储，兼容性较好
+            保存值的类型被限定（键是字符串，值是JSON字符串），浏览器在隐私模式（IE）下不可读取，不能被爬虫
+            存储容量通常在5MB到10MB之间
+        3.sessionstorage
+            当前页面关闭后就会立刻清理，会话级别的存储方式。但是刷新网页不会清除,是一个临时的存在。
+            存储容量通常在5MB到10MB之间
+        4.indexedDB
+            H5标准的存储方式，，他是以键值对进行存储，可以快速读取，适合WEB场景
+            存储容量通常在 250MB,甚至没有上限
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

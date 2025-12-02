@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+<title>demo</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .类选择器 {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 3px solid black;
+        box-sizing: border-box;
+        background: red;
+        /* background: red !important; */
+
+
+    }
+
+    #id选择器 {
+        background: blue ;
+    }
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+        !important>行内样式>id>类/伪类/属性>标签
+        <!-- <div class="类选择器 " id="id选择器" style="background: green;">02_css选择器优先级</div> -->
+        <div class="类选择器 " id="id选择器" >02_css选择器优先级</div>
+
+
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_=======:`, 3)
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

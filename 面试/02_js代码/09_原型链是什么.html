@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 09_原型链是什么
+            原型就是一个普通对象,它是为构造函数的实例共享属性和方法;所有实例中引用的原型都是同一个对象
+            使用prototype可以把方法挂在原型上，内存值保存一份
+            __proto__可以理解为指针,实例对象中的属性,指向了构造函数的原型(prototype)
+            一个实例对象在调用属性和方法的时候,会依次从实例本身、构造函数原型、原型的原型上去查找
+        </textarea>
+        <img style="width: 700px;height: 350px;"
+            src="https://img0.baidu.com/it/u=1564045444,121577099&fm=253&fmt=auto&app=138&f=PNG?w=806&h=436">
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        function Person(params) {
+            this.say = function () {
+                console.log("唱歌")
+            }
+        }
+        let p1 = new Person()
+        let p2 = new Person()
+        p1.say()
+        p2.say()
+
+
+        Person.prototype.look = function () {
+            console.log("看西游记")
+        }
+
+        p1.look()
+        p2.look()
+
+        console.log(p1.__proto__ == Person.prototype)
+        console.log(p1.__proto__.look == Person.prototype.look)
+        console.log(p1.__proto__.look == p2.__proto__.look)
+
+
+        let app = {
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_ =======:`, 111)
+
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 43_解决了哪些移动端的兼容问题
+            1.当设置样式overflow:scroll/auto时，Ios上滑动会卡顿-webkit-overflow-scrolling:touch;
+            2.在安卓环境下placeholder文字设置行高时会偏上input有placeholder属性的时候不要设置行高
+            3.移动端字体小于12px时异常显示应该先把在整体放大一倍,然后再用transform进行缩小
+            4.ios下input按钮设置了disabled属性为true显示异常input[typy=button]{ opcity:1}
+            5.安卓手机下取消语音输入按钮input::-webkit-input-speech-button{ display:none}
+            6.IOS下取消input输入框在输入引文首字母默认大写`<input autocapitalize='off' autocorrect='off'/>`
+            7.禁用IOS和安卓用户选中文字添加全局css样式: -webkit-user-select:none
+            8.禁止IOS弹出各种窗口-webkit-touch-callout:none
+            9·禁止1OS识别长串数字为电话添加meta属性 <meta conten='telephone=no'Iname='format-detec'>
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            vue的特性，用来对文本进行格式化处理使用它的两个地方，一个是插值表达式，一个是v-bind
+
+            分类：
+            
+            1.全局过滤器Vue.filter
+            
+            2.本地过滤器和methods同级filter:
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <hr>
+
+        <div v-for="item in lists" :key="item">
+            {{item | 过滤器1}}
+
+
+        </div>
+
+        <hr>
+        <div v-for="item in lists">
+            {{item | 过滤器2}}
+
+
+        </div>
+
+
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let jq = $;
+        jq(() => {
+
+        })//
+
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+                lists: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+            },
+            methods: {
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            filters: {
+                过滤器1(value) {
+                    console.log(`${1}>过滤器1=======:value`, value)
+                    return value < 10 ? "0" + value : "" + value
+                },
+            },
+            async mounted() {
+
+            },
+        }
+
+        Vue.filter("过滤器2", (value) => {
+            console.log(`${1}>过滤器2=======:value`, value)
+            return value < 10 ? "-" + value : "" + value
+        })
+
+        let Vue_app = new Vue(app)
+    
+     
+    </script>
+</body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
