@@ -17,32 +17,27 @@
 <body>
     <nav id="root">
         <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
-            vue的特性，用来对文本进行格式化处理使用它的两个地方，一个是插值表达式，一个是v-bind
+            # 25_如何封装一个组件
 
-            分类：
+            1.使用Vue.extend()创建一个组件
             
-            1.全局过滤器Vue.filter
+            2.使用Vue.components()方法注册组件
             
-            2.本地过滤器和methods同级filter:
+            3,如果子组件需要数据,可以在props中接收定义
+            
+            4.子组件修改好数据，要把数据传递给父组件,可以用emit()方法
+            
+            原则：
+            
+            把功能拆开
+            
+            尽量让组件原子化,一个组件做一件事情
+            
+            容器组件管数据，展示组件管视图
         </textarea>
         <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
         <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
         <hr>
-
-        <div v-for="item in lists" :key="item">
-            {{item | 过滤器1}}
-
-
-        </div>
-
-        <hr>
-        <div v-for="item in lists">
-            {{item | 过滤器2}}
-
-
-        </div>
-
-
 
 
 
@@ -58,36 +53,39 @@
             el: " #root ",
             data: {
                 src1: "",
-                lists: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
             },
             methods: {
                 async 方法1_() {
-                    console.log(`${1}>方法1_ =======:`, 111)
+
+                    // extend方式
+                    const MyComponent = Vue.extend({
+                        // 组件选项：data, methods, template, props 等
+                        template: '<div>Hello {{ name }}!</div>',
+                        data() {
+                            return {
+                                name: 'World'
+                            };
+                        }
+                    });
+
+                    // component方式
+                    Vue.component('my-button', {
+                        template: '<button class="btn">{{ label }}</button>',
+                        props: ['label']
+                    });
 
                 }, //
 
 
 
             }, //////
-            filters: {
-                过滤器1(value) {
-                    console.log(`${1}>过滤器1=======:value`, value)
-                    return value < 10 ? "0" + value : "" + value
-                },
-            },
             async mounted() {
 
             },
         }
 
-        Vue.filter("过滤器2", (value) => {
-            console.log(`${1}>过滤器2=======:value`, value)
-            return value < 10 ? "-" + value : "" + value
-        })
 
-        let Vue_app = new Vue(app)
-    
-     
+        new Vue(app)
     </script>
 </body>
 

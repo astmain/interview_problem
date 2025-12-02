@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 17_ES6的12个常用特性
+            1.新增块级作用域(let,const)
+                不存在变量提升
+                存在暂时性死区的问题
+                块级作用域的内容
+                不能在同一个作用域内重复声明
+            2.新增了定义类的语法糖(class)
+            3,新增了一种基本数据类型(symbol)
+            4.新增了解构赋值
+                从数组或者对象中取值，然后给变量赋
+            5.新增了函数参数的默认值
+            6.给数组新增了API
+            7.对象和数组新增了扩展运算符
+            ৪.Promise
+                解决回调地狱的问题。
+                自身有all, reject, resolve,race方法
+                原型上有then,catch
+                把异步操作队列化
+                三种状态: pending初始状态，fulfilled操作成功,rejected操作失败
+                状态： pending -> fulfilled;pending -> rejected 一旦发生，状态就会凝固，
+            9.新增了模块化(import,export)
+            10.新增了set和map数据结构
+                set就是不重复map的key的类型不受限制
+            11.新增了generator
+            12.新增了箭头函数
+                不能作为构造函数使用，不能用new
+                箭头函数就没有原型
+                箭头函数没有arguments
+                箭头函数不能用call,apply,bind去改变this的执行
+                this指向外层第一个函数的this
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

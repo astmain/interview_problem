@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+    <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+<body>
+    <nav id="root">
+        <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 12_js设计原理是什么
+            js引擎:v8引擎语法解析
+            运行上下文:浏览器window,dom,让js驱动
+            调用栈:单线程,主线程渲染工作
+            事件循环:调用栈空的时候,把任务放到循环里面执行  
+            回调:执行一个函数的同时执行另一个函数，且因为另一个函数是作为实参传递，另一个函数是可以自定义的；主函数可以处理数据外，回调函数也可以进一步处理数据，并返回想要的结果。
+       
+       
+
+            先明确 3 个核心概念（理解事件循环的前提）
+            JS 是单线程（同一时间只能执行一个任务），为了不阻塞代码（比如等待网络请求、定时器时不卡死），设计了 “任务队列 + 调用栈 + 事件循环” 的机制，三个核心角色分工如下：
+            调用栈（Call Stack）：JS 执行代码的 “主战场”，同步任务会直接进入栈中执行，执行完就出栈；如果遇到异步任务（比如 setTimeout、网络请求、DOM 事件），不会等待，直接跳过，继续执行后续同步任务。
+            任务队列（Task Queue）：异步任务不会进入调用栈，而是在 “准备就绪” 后（比如定时器到时间、请求拿到数据、用户点击 DOM），被推入这个 “等待队列”。
+            任务队列又分两种（优先级不同）：
+            宏任务（Macro Task）：setTimeout、setInterval、DOM 事件、fetch 网络请求、script 脚本执行等。
+            微任务（Micro Task）：Promise.then/catch/finally、async/await（本质是 Promise 语法糖）、queueMicrotask 等。
+            事件循环（Event Loop）：一个 “无限循环的监听器”，持续检查「调用栈是否为空」。
+
+        </textarea>
+        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <hr>
+
+
+
+    </nav>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = {
+            el: " #root ",
+            data: {
+                src1: "",
+            },
+            methods: {
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_ =======:`, 111)
+
+                }, //
+
+
+
+            }, //////
+            async mounted() {
+
+            },
+        }
+
+
+        new Vue(app)
+    </script>
+</body>

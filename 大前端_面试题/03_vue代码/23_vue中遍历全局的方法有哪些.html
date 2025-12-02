@@ -12,20 +12,25 @@
     <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+</head>
 
 <body>
     <nav id="root">
         <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            # 23_vue中遍历全局的方法有哪些
 
+            // 查看所有挂载到 Vue 原型链上的方法
+            console.log(Object.getOwnPropertyNames(Vue.prototype));
+
+            // main.js
+            Vue.prototype.$utils = globalUtils;
+
+            // 组件中
+            this.$utils.formatDate(new Date());
+            // 查看所有挂载到 Vue 原型链上的方法
         </textarea>
         <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
-        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
+        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
         <hr>
 
 
@@ -33,14 +38,19 @@
     </nav>
     <!-- -------------------------------------------------------------------------------------------------- -->
     <script>
+        let jq = $;
+        jq(() => {
+
+        })//
+
         let app = {
             el: " #root ",
             data: {
                 src1: "",
             },
             methods: {
-                async 按钮1_() {
-                    console.log(`${1}>按钮1_ =======:`, 111)
+                async 方法1_() {
+                    console.log(`${1}>方法1_ =======:`, 111)
 
                 }, //
 
@@ -56,3 +66,11 @@
         new Vue(app)
     </script>
 </body>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>

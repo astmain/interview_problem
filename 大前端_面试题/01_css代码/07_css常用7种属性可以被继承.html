@@ -12,53 +12,43 @@
     <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- <script class="官网 https://www.npmjs.com/package/colors" src="https://unpkg.com/color-js@1.0.3/color.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 
 <body>
-    <nav id="root">
+    <DL id="root">
         <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
-            # 25_如何封装一个组件
-
-            1.使用Vue.extend（）创建一个组件
-            
-            2.使用Vue.components()方法注册组件
-            
-            3,如果子组件需要数据,可以在props中接收定义
-            
-            4.子组件修改好数据，要把数据传递给父组件,可以用emit()方法
-            
-            原则：
-            
-            把功能拆开
-            
-            尽量让组件原子化,一个组件做一件事情
-            
-            容器组件管数据，展示组件管视图
+            ### 07_css常用7种属性可以被继承
+            css的三大特性：继承、层叠、优先级
+            子元素可以继承父类元素的样式
+            1.字体的一些属性：font
+            2.文本的一些属性： line-height
+            3.元素的可见性: visibility:hidden
+            4.表格布局的属性: border-spacing
+            5.列表的属性： list-style
+            6.页面样式属性: page
+            7.声音的样式属性
         </textarea>
-        <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
-        <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
+        <el-button type="primary" size="mini" @click="按钮1_()">按钮1_</el-button>
         <hr>
 
 
 
-    </nav>
+    </DL>
     <!-- -------------------------------------------------------------------------------------------------- -->
     <script>
-        let jq = $;
-        jq(() => {
-
-        })//
-
         let app = {
             el: " #root ",
-            data: {
-                src1: "",
-            },
+            data: {},
             methods: {
-                async 方法1_() {
-                    console.log(`${1}>方法1_ =======:`, 111)
+                async 按钮1_() {
+                    console.log(`${1}>按钮1_ =======:`, 111)
 
-                }, //
+                }, ////
 
 
 
@@ -72,11 +62,3 @@
         new Vue(app)
     </script>
 </body>
-
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-</style>

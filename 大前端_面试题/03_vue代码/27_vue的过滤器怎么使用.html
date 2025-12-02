@@ -17,11 +17,33 @@
 <body>
     <nav id="root">
         <textarea class="笔记" style="width: 100vw;height: 150px;background: grey;">
+            Vue 3 中已移除过滤器！
+            vue的特性，用来对文本进行格式化处理使用它的两个地方，一个是插值表达式，一个是v-bind
 
+            分类：
+            
+            1.全局过滤器Vue.filter
+            
+            2.本地过滤器和methods同级filter:
         </textarea>
         <img v-if="src1" style="width: 700px;height: 350px;" :src="src1">
         <el-button type="primary" size="mini" @click="方法1_()">方法1_</el-button>
         <hr>
+
+        <div v-for="item in lists" :key="item">
+            {{item | 过滤器1}}
+
+
+        </div>
+
+        <hr>
+        <div v-for="item in lists">
+            {{item | 过滤器2}}
+
+
+        </div>
+
+
 
 
 
@@ -37,6 +59,7 @@
             el: " #root ",
             data: {
                 src1: "",
+                lists: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
             },
             methods: {
                 async 方法1_() {
@@ -47,13 +70,25 @@
 
 
             }, //////
+            filters: {
+                过滤器1(value) {
+                    console.log(`${1}>过滤器1=======:value`, value)
+                    return value < 10 ? "0" + value : "" + value
+                },
+            },
             async mounted() {
 
             },
         }
 
+        Vue.filter("过滤器2", (value) => {
+            console.log(`${1}>过滤器2=======:value`, value)
+            return value < 10 ? "-" + value : "" + value
+        })
 
-        new Vue(app)
+        let Vue_app = new Vue(app)
+    
+     
     </script>
 </body>
 
