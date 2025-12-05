@@ -1,0 +1,83 @@
+<meta charset="UTF-8" />
+<title>
+桌面创建文件夹  下载的东西 直接下载在 文件夹里面
+</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet" />
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+<!-- <script class="迅雷下载" src="http://open.thunderurl.com/thunder-link.js"></script> -->
+<!-- <script class="函数延迟" src="../函数延迟.js"></script> -->
+
+<style></style>
+
+<body>
+    <dl id="root">
+        <el-button type="primary" size="default" @click="方法111()">方法111</el-button>
+        <el-button type="primary" size="default" @click="方法222()">方法222</el-button>
+    </dl>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                msg: "我是小许",
+            },
+            methods: {
+                async 方法111() {
+                    axios({
+                        method: 'get',
+                        url: "https://tbm-auth.alicdn.com/3e6f7966015d799a/1637563026006/ad98d63f684baccf.mp4_338202946234_mp4_264_hd.taobao.mp4?auth_key=1657621850-0-0-61b269802f582a6667961af09b7ef956&t=213fca8b16576191508312878e1119&b=video_plus&p=cloudvideo_http_seller_sucai_vod_publish",
+                        // 必须显式指明响应类型是一个Blob对象，这样生成二进制的数据，才能通过window.URL.createObjectURL进行创建成功
+                        responseType: 'blob',
+                    }).then((res) => {
+                        if (!res) {
+                            return
+                        }
+                        // 将lob对象转换为域名结合式的url
+                        let blobUrl = window.URL.createObjectURL(res.data)
+                        let link = document.createElement('a')
+                        document.body.appendChild(link)
+                        link.style.display = 'none'
+                        link.href = blobUrl
+                        // 设置a标签的下载属性，设置文件名及格式，后缀名最好让后端在数据格式中返回
+                        link.download = '下载文件.mp4'
+                        // 自触发click事件
+                        link.click()
+                        document.body.removeChild(link)
+                        window.URL.revokeObjectURL(blobUrl);
+                    })
+                }, //
+
+                async 方法222() {
+                    // 下载服务器的MP3文件
+                    const download_vido = (filePath) => {
+                        fetch(filePath).then(res => res.blob()).then(blob => {
+                            const a = document.createElement('a');
+                            document.body.appendChild(a)
+                            a.style.display = 'none'
+                            // 使用获取到的blob对象创建的url
+                            const url = window.URL.createObjectURL(blob);
+                            a.href = url;
+                            // 指定下载的文件名
+                            a.download = 'a1111111111111111111111.mp4';
+                            a.click();
+                            document.body.removeChild(a)
+                            // 移除blob对象的url
+                            window.URL.revokeObjectURL(url);
+                        });
+                        
+                    }
+
+                    download_vido("https://tbm-auth.alicdn.com/3e6f7966015d799a/1637563026006/ad98d63f684baccf.mp4_338202946234_mp4_264_hd.taobao.mp4?auth_key=1657621850-0-0-61b269802f582a6667961af09b7ef956&t=213fca8b16576191508312878e1119&b=video_plus&p=cloudvideo_http_seller_sucai_vod_publish")
+
+                }, //
+            }, //////
+            async mounted() { },
+        });
+    </script>
+</body>

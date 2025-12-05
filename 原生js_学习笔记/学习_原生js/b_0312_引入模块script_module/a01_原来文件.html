@@ -1,0 +1,98 @@
+<meta charset="UTF-8">
+<title>视频 https://www.bilibili.com/video/BV12z4y1U7no?from=search&seid=6823153128534439066&spm_id_from=333.337.0.0
+</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_descriptor_可以()">按钮_descriptor_可以</el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }
+    let ppp = {}
+    let jq = $
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_打印() {
+          // Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。
+          //. 描述该方法允许精确地添加或修改对象的属性。通过赋值操作添加的普通属性是可枚举的，在枚举对象属性时会被枚举到（for...in 或 Object.keys 方法）
+          // 以改变这些属性的值，也可以删除这些属性。这个方法允许修改默认的额外选项（或配置）。默认情况下，使用 Object.defineProperty() 添加的属性值是不可修改（immutable）的。
+
+          let obj222 = Object.defineProperty(obj, "aaa", { value: 1 })
+          console.log('000=>111:', obj222 === obj ? true : false)
+
+          obj222.aaa = 2
+          console.log('111=>默认不许修改,枚举:', obj)
+          console.log('111=>默认不许修改,枚举:', obj222)
+
+          delete obj222.aaa
+          console.log('222=>默认不许修改,枚举:', obj)
+          console.log('222=>默认不许修改,枚举:', obj222)
+
+          for (const key in obj) {
+            console.log('333=>默认不许修改,枚举:', key, obj[key])
+          }
+
+
+        },//---
+
+
+        async 按钮_descriptor_可以() {
+          // Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。
+          //. 描述该方法允许精确地添加或修改对象的属性。通过赋值操作添加的普通属性是可枚举的，在枚举对象属性时会被枚举到（for...in 或 Object.keys 方法）
+          // 以改变这些属性的值，也可以删除这些属性。这个方法允许修改默认的额外选项（或配置）。默认情况下，使用 Object.defineProperty() 添加的属性值是不可修改（immutable）的。
+
+          let obj222 = Object.defineProperty(obj, "aaa", {
+            value: 1,
+            enumerable: true,  //可列举的；可点数的
+            configurable: true,  //可配置的；结构的
+            writable: true, //可写的，能写成文的
+          })
+          console.log('000=>111:', obj222 === obj ? true : false)
+
+          obj222.aaa = 666666666666
+          obj.aaa = 666666666666
+          console.log('111=>descriptor_可以:', obj)
+          console.log('222=>descriptor_可以:', obj222)
+
+          delete obj222.aaa
+          console.log('333=>descriptor_可以:', obj)
+          console.log('444=>descriptor_可以:', obj222)
+
+          await 函数延迟(1000)
+
+
+          for (const key in obj222) {
+            console.log('555=>descriptor_可以:', key, obj[key])
+          }
+
+        },//---
+
+
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+  .颜色 {
+    background: red;
+  }
+</style>
+
+<body>
+  <DD id="root">
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+
+    <div :class="item==词组.key  ?  '颜色' :'无颜色' " v-for='(item  ,index)  in 词组.arr'>{{item}}</div>
+    {{item==词组.key}}
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }; let ppp = {}; let jq = $
+    let app = new Vue({
+      el: " #root ",
+      data: {
+        词组: {
+          key: "词组1",
+          arr: ["词组1", "词组2", "词组3"],
+          obj: {
+            词组1: ["男鞋1", "男鞋2"],
+            词组2: ["女鞋1", "女鞋2"],
+            词组3: ["童鞋1", "童鞋2"],
+          },
+        },
+      },
+      methods: {
+        async 按钮_打印() {
+          console.log('目标=>obj:111', obj)
+          console.log('目标=>ppp:222', ppp)
+        },// ---
+
+
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>app</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <script src="../main.js"></script>
+
+    -------------------------------------------------
+    https://www.cnblogs.com/sener/p/14001382.html
+    <input type="button" id="send" value="发送">
+    <input type="button" id="close" value="关闭连接">
+    <input type="button" id="open" value="重新链接">
+    <div id="msg"></div>
+    <script>
+      var ws = new WebSocket("ws://localhost:9999");
+      ws.onopen = function (e) {
+        console.log("connect...");
+        console.log('111>监听链接:', 333)
+      }
+
+      ws.onmessage = function (e) {
+        document.getElementById("msg").innerHTML = e.data;
+        console.log("send message");
+      }
+
+      ws.onclose = function () {
+        console.log("close connect!");
+      }
+
+      ws.onerror = function () {
+        console.log("socket error...");
+      }
+      document.getElementById("open").onclick = function () {
+        ws.onopen("onopen onopen...");
+        console.log('111>ws:', ws)
+      }
+
+      document.getElementById("send").onclick = function () {
+        ws.send("send message...");
+      }
+
+      document.getElementById("close").onclick = function () {
+        ws.close();
+      }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<meta charset="UTF-8">
+<title>视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?spm_id_from=333.337.search-card.all.click</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button class="按钮_打印" type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+        <el-button type="primary" size="mini" @click="方法111()">方法111</el-button>
+        <el-button type="primary" size="mini" @click="方法222()">方法222</el-button>
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮_打印() {
+                    console.log('333>get:', 111)
+                }, ////
+                async 方法111() {
+                    (function () {
+                        //1
+                        var jq = function () {
+                            return new jq.prototype.init(dom)
+                        }
+                        //2
+                        jq.prototype = {
+                            init: function () {
+                                return document.querySelector(dom)
+                            },
+                            css: function () {
+                                alert()
+                            }
+                        }
+
+                        //3
+                        // window.$ = $ = jquery = jQuery = jq
+                        window.jq = jq
+
+                    })()
+
+
+                }, ////
+                async 方法222() {
+
+
+                    function ME() {
+                        return new ME.prototype.init()
+                    }
+
+                    let pro = ME.prototype
+
+                    pro.init = function () {
+                        return "我是字符aaaa"
+                    }
+                    pro.str = function () {
+                        console.log('str>000:我是str', "我是strstrst111r")
+                        console.log('str>111:this', this)
+                        console.log('str>222:pro', pro)
+                        return "我是strstrst111r"
+                    }
+                    pro.num = function () {
+                        console.log('num>000:我是num', "我是num")
+                        console.log('num>111:this', this)
+                        console.log('num>222:pro', pro)
+                        return "我是num"
+                    }
+                    //                           ME 是 构造函数    prototype是构造函数ME 的原型  => 一个对象赋值给另一个对象 就出现了对象引用关系
+                    pro.init.prototype = pro
+
+
+
+                    let aaa = ME()
+                    console.error('999>ME().str():', ME().str())
+                    // console.error('999>ME().str():', ME().str().num())
+                    console.error('999>ME().str():', ME().num())
+                    console.error('999>ME().str():', aaa.num())
+
+                }, ////
+
+
+            }, //////
+            async mounted() {
+                this.方法111()
+            },
+        })
+    </script>
+</body>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>视频 https://www.bilibili.com/video/BV18L4y1t7is?spm_id_from=333.337.search-card.all.click</title>
+  <title>文档 https://www.bilibili.com/video/BV18L4y1t7is?spm_id_from=333.337.search-card.all.click</title>
+  <script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <DD id="root">
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_数组_负索引()">按钮_数组_负索引</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: "文字111", b: "文字222" }
+    let ppp = {}
+    let ppp111 = {}
+    // ----------------------------------------
+
+
+
+
+
+
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+
+        async 按钮_数组_负索引() {
+
+          function 数据arr(arr) {
+            if (!Array.isArray(arr)) {
+              return new TypeError("不是数组")
+            }
+
+            return new Proxy(arr, {
+              get(target, index, receiver) {
+                index = +index  //字符  +""   转成数字
+                return target[index < 0 ? target.length + index : index]
+              },
+              set(target, index, value, receiver) {
+                index = +index
+
+                // return target[1]
+                let aaa = (target[index < 0 ? target.length + index : index] = val)
+                let bbb = val
+                debugger
+                console.log('aaa=>111:', aaa)
+                console.log('bbb=>222:', bbb)
+                return (target[index < 0 ? target.length + index : index] = val)
+              },
+
+            })
+
+          }
+
+
+
+
+          let arr = ["aaa", "bbb", "ccc"]
+          let new_arr = 数据arr(arr)
+          // console.log('1=>111:', new_arr[1])
+          console.log('-1=>arr:', arr[-1])
+          console.log('-1=>new_arr:', new_arr[-1])
+
+        },
+
+
+        async 按钮_打印() {
+
+          console.log('目标=>obj:111', obj)
+
+
+          let aaa = "1"
+
+          let bbb = +aaa
+
+          debugger
+
+        },
+
+
+      }
+    })
+  </script>
+</body>

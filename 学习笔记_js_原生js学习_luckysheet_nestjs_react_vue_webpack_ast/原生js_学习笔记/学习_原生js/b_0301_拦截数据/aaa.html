@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+  <script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <DD id="root">
+    <!-- <dl style="display: flex;flex-direction:column ;"> -->
+    <el-button type="primary" size="mini" @click="按钮_ppp()">按钮_ppp</el-button>
+    <el-button type="primary" size="mini" @click="按钮_设置_ppp()">按钮_设置_ppp</el-button>
+    <el-button type="primary" size="mini" @click="按钮_得到_ppp_a()">按钮_得到_ppp_a</el-button>
+    <el-button type="primary" size="mini" @click="按钮_has()">按钮_has</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_deleteProperty()">按钮_deleteProperty</el-button>
+    <el-button type="primary" size="mini" @click="按钮_deleteProperty()">按钮_deleteProperty</el-button>
+    <el-button type="primary" size="mini" @click="按钮_Reflect_删除()">按钮_Reflect_删除</el-button>
+    <el-button type="primary" size="mini" @click="按钮_ownKeys()">按钮_ownKeys</el-button>
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+    <!-- </dl> -->
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }
+    let ppp = {}
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        按钮_ppp() {
+          // console.log('目标_obj=>111:', 目标_obj)
+          // const ppp = new Proxy(wind_obj, handler)
+          ppp = new Proxy(obj, {
+            set(target, property, value, receiver) {
+              console.log('set.....................................')
+              console.log('set=>111:target', target)  // 1. target :原对象目标
+              console.log('set=>222:property', property)   // receiver: key  所有权
+              console.log('set=>333:value', value)  // 3. value: 新的值// 
+              console.log('set=>444:receiver', receiver) //4. receiver:又设置成新的对象的proxy 格式
+
+              return Reflect.set(...arguments);
+              // return Reflect.set(target, value);
+            },
+
+            get(target, property, receiver) {
+              console.log('get###############################')
+              console.log('get=>111:target', target)
+              console.log('get=>222:property', property)
+              console.log('get=>333:receiver', receiver)
+              // target[property]=9999
+              // return target
+
+              // return { ccc: 333, ddd: 444 }
+
+              // target = { ccc: 333, ddd: 444 }
+              // return target
+
+              return Reflect.get(target, property);
+            },
+
+            has(target, key) {
+              console.log('has_________________________')
+              console.log('has=>target:111', target)
+              console.log('has=>key:222', key)
+            },
+
+            deleteProperty(target, property) {
+              console.log('deleteProperty========================')
+              console.log('deleteProperty=>target:111', target)
+              console.log('deleteProperty=>property:222', property)
+              if (property == "a") {
+                // return false
+                return target
+              }
+              else if (property == "b") {
+                delete target[property]
+                // return target
+                return true
+              }
+              else {
+                return target
+              }
+
+
+            },
+
+            ownKeys(target) {
+              console.log('ownKeys>>>>>>>>>>>>>>>>>>')
+              console.log('ownKeys=>target:111', target)
+              return Reflect.ownKeys(target)
+            }
+
+
+
+          })
+
+        },
+        async 按钮_设置_ppp() {
+          let 随机数 = Math.round(Math.random() * 100000000000)
+          console.log('随机数=>111:', 随机数)
+          ppp.a = 随机数
+          ppp.a = 666
+
+        },
+
+
+        async 按钮_得到_ppp_a() {
+          ppp.a
+
+        },
+
+
+        async 按钮_has() {
+          console.log(111, '_secret' in ppp);
+          console.log(222, 'a' in ppp);
+        },
+        async 按钮_deleteProperty() {
+          delete ppp["a"]
+          delete ppp["b"]
+        },
+
+        async 按钮_Reflect_删除() {
+          // 一一对应 
+          Reflect.deleteProperty(ppp, "b")
+        },
+        async 按钮_ownKeys() {
+          console.log('按钮_ownKeys=>keys:', Object.keys(ppp))
+        },
+
+        async 按钮_打印() {
+          console.log('目标=>obj:111', obj)
+          console.log('目标=>ppp:222', ppp)
+        },
+
+
+      }
+    })
+  </script>
+</body>

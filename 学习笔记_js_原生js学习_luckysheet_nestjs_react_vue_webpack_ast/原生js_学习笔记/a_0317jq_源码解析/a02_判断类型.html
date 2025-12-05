@@ -1,0 +1,78 @@
+<meta charset="UTF-8">
+<title>10视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?spm_id_from=333.337.search-card.all.click</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button class="cls_打印" size="mini" @click="打印()">打印</el-button>
+        <el-button type="primary" size="mini" @click="方法111()">方法111</el-button>
+        <el-button type="primary" size="mini" @click="方法222()">方法222</el-button>
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {},
+            methods: {
+                async 打印() {
+                    console.log('111>222:', 333)
+                }, ////
+                async 方法111() {
+
+                },
+                ////
+                async 方法222() {
+                    console.log('0>222:', $.type())
+                    console.log('1>222:', $.type(undefined))
+                    console.log('2>222:', $.type(NaN))
+                    console.log('3>222:', $.type(null))
+                    console.log('4>222:', $.type(alert))
+                    console.log('5>222:', $.type(console))
+                    console.log('6>222:', $.type(function () {}))
+                    console.log('7>222:', $.type(Date))
+                    console.log('8>222:', $.type(this))
+                    console.log('9>[]:', $.type([]))
+                    console.log('10>{}:', $.type({}))
+
+
+                    console.log('01>对象自变量:', $.isPlainObject({}))
+                    console.log('01>对象自变量:', $.isPlainObject(new Object()))
+                    console.log('01>对象自变量:', $.isPlainObject(window.location))
+                    console.log('01>对象自变量:', $.isPlainObject(window))
+
+                    console.log('02>空对象:', $.isEmptyObject({}))
+                    console.log('02>空对象:', $.isEmptyObject({
+                        aaa: 111
+                    }))
+
+                    console.log('02>空对象:', $.isEmptyObject(function aaa() {
+                        return 111
+                    }))
+
+                    console.log(`03解析节点>`, $.parseHTML(`<li ></li> <script>alert(111)` + "<" + `/script>`,
+                        document, true))
+
+
+
+
+
+                }, ////
+
+
+            }, //////
+            async mounted() {
+                this.方法111()
+            },
+        })
+    </script>
+</body>

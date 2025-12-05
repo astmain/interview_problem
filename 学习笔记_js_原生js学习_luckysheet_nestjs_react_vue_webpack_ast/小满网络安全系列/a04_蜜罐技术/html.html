@@ -1,0 +1,99 @@
+<meta charset="UTF-8" />
+<title>视频 https://www.bilibili.com/video/BV1eZ4y1C7Jc/?p=3</title>
+<title>文章 https://www.bilibili.com/read/cv16944860</title>
+<title>官网 https://github.com/exif-js/exif-js</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet" />
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+<!-- <script class="迅雷下载" src="http://open.thunderurl.com/thunder-link.js"></script> -->
+<!-- <script class="函数延迟" src="../函数延迟.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+
+<style>
+    img {
+        width: 100px;
+        border: 1px red solid;
+        margin: 4px;
+    }
+
+    #root {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<body>
+    <NAV id="root">
+        <div>
+            <el-button type="primary" @click="按钮01_()">按钮01_</el-button>
+            <el-button type="primary" @click="按钮02_1getData()">按钮02_1getData</el-button>
+            <el-button type="primary" @click="按钮02_2getTag()">按钮02_2getTag</el-button>
+            <el-button type="primary" @click="按钮02_3getAllTags()">按钮02_3getAllTags</el-button>
+            <el-button type="primary" @click="按钮02_4pretty()">按钮02_4pretty</el-button>
+        </div>
+        <img class="img1" :src="img01">
+        <img class="img2" :src="img02">
+        <img class="img3" :src="img03">
+        <img class="img4" :src="img04">
+
+    </NAV>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                img01: "",
+                img02: "",
+                img03: "",
+                img04: "",
+            },
+            methods: {
+                async 按钮01_() {
+                    this.img01 = "./img01.jpg"
+                    this.img02 = "./img01.jpg"
+                    this.img03 = "./img01.jpg"
+                    this.img04 = "./img01.jpg"
+
+
+                }, //
+                async 按钮02_1getData() {
+                    let file1 = document.querySelector('.img1')
+                    EXIF.getData(file1, function () {
+                        console.log('1----------------------------');
+                        console.log(EXIF.pretty(this));
+                    })
+                }, // 
+                async 按钮02_2getTag() {
+      
+                    let file1 = document.querySelector('.img2')
+                    console.log('111>222:',file1 )
+                    EXIF.getTag(file1, function () {
+                        console.log('1----------------------------');
+                        console.log(EXIF.getAllTags(this));
+                    })
+                }, //
+                async 按钮02_3getAllTags() {
+                    let file1 = document.querySelector('.img3')
+                    EXIF.getAllTags(file1, function () {
+                        console.log('1----------------------------');
+                        console.log(EXIF.pretty(this));
+                    })
+                }, //
+                async 按钮02_4pretty() {
+                    let file1 = document.querySelector('.img4')
+                    EXIF.pretty(file1, function () {
+                        console.log('1----------------------------');
+                        console.log(EXIF.pretty(this));
+                    })
+                }, //
+
+            }, //////
+            async mounted() { },
+        });
+    </script>
+</body>

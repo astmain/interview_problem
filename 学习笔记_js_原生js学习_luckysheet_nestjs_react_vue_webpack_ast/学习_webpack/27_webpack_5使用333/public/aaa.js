@@ -1,0 +1,1 @@
+console.log('111>222:', "public文件的aaa")

@@ -1,0 +1,112 @@
+<meta charset="UTF-8">
+<title>https://bbs.tampermonkey.net.cn/thread-896-1-1.html</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_111_发请求()">方法_111_发请求</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_222_李恒道原生方法()">方法_222_李恒道原生方法</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_333_改写成await()">方法_333_改写成await</el-button>
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    var obj = {}; let ppp = {}; let jq = $; let url = "http://120.25.224.61:9001/word_01_middle?user_id=234578&word_long=" + "我的你的鞋子"
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+        async 方法_111_发请求() {
+          // let res = await axios.get(url)
+          // console.log('方法_111=>一:', res.data)
+          fetch(url)
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (myJson) {
+              console.log("方法_111_发请求", myJson);
+            });
+
+
+        },//-
+
+
+        async 方法_222_李恒道原生方法() {
+
+          let oldfetch = fetch;
+          function fuckfetch() {
+            let res = new Promise(async (resolve, reject) => {
+              oldfetch.apply(this, arguments).then(response => {
+                const oldJson = response.json;
+
+
+                response.json = function () {
+                  return new Promise((resolve, reject) => {
+                    oldJson.apply(this, arguments).then(result => {
+                      console.error('拦截=>result:', result)
+                      resolve(result);
+                    });
+                  });
+                };
+                resolve(response);
+              });
+            });
+
+            return res
+
+
+
+          }
+          window.fetch = fuckfetch;
+        },//-
+
+
+        async 方法_333_改写成await() {
+          let fecth旧 = fetch;
+          async function fuckfetch() {
+            let response = await fecth旧.apply(this, arguments)
+            let 旧json = response.json
+            console.log('拦截=>参数:', arguments)
+
+
+            response.json = async function () {
+              let json结果 = await 旧json.apply(this, arguments)
+              console.error('拦截=>json结果:', json结果)
+              return json结果
+
+            }
+            return response
+          }
+          window.fetch = fuckfetch;
+        },
+        //-
+
+        async 方法_555() {
+
+        },
+        //-
+
+
+      }
+    })
+  </script>
+</body>

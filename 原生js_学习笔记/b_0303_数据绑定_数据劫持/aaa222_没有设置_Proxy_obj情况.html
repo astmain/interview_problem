@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+  <title>视频 https://www.bilibili.com/video/BV1Jq4y177Fi?p=3&spm_id_from=pageDriver</title>
+</head>
+
+<body>
+
+
+  <DD>
+    <input id="input" type="text">
+    <p id="show_p"></p>
+    <div id="show_div"></div>
+
+  </DD>
+  <!-- ------------------------------------------- -->
+  <script>
+    let obj = {}
+    let input = document.querySelector("#input")
+
+
+    let ppp = new Proxy({}, {
+
+      // vue3里面此段代码采用发布订阅的模式 传递到订阅者
+      //调用模板解析 diff对比改变 更新
+      // this.subtribe.emit('', value)
+      set(target, property, value, receiver) {
+        // set(target, property, value) {
+        if (property == "text") {
+          input.value = value
+          show_p.innerHTML = value
+          show_div.innerHTML = value
+        }
+        // return Reflect.set(...arguments);
+        // return Reflect.set(target, property, value);
+        return Reflect.set(target, property, value, receiver);
+      },
+
+      get(target, property, receiver) {
+        // get(target, property) {
+        // return Reflect.get(target, property);
+        return Reflect.get(target, property, receiver);
+      },
+    })
+
+
+
+
+
+    input.addEventListener("keyup", (e) => {
+      ppp["text"] = e.target.value
+    })
+
+
+  </script>
+</body>
+
+</html>

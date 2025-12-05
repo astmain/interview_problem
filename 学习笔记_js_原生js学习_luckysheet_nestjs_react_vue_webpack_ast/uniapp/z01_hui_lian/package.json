@@ -1,0 +1,12 @@
+{
+  "name": "tim-uniapp",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cos-wx-sdk-v5": "^0.7.10",
+    "tim-wx-sdk": "^2.6.2"
+  }
+}

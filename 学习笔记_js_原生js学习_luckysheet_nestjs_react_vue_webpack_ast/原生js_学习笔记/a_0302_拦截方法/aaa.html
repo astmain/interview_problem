@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+  <script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <DD id="root">
+    <!-- <dl style="display: flex;flex-direction:column ;"> -->
+    <el-button type="primary" size="mini" @click="按钮_ppp()">按钮_ppp</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_获取属性描述()">按钮_获取属性描述</el-button>
+    <el-button type="primary" size="mini" @click="按钮_修改原型链()">按钮_修改原型链</el-button>
+    <el-button type="primary" size="mini" @click="按钮_获取原型链()">按钮_获取原型链</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_是否可扩展()">按钮_是否可扩展</el-button>
+    <el-button type="primary" size="mini" @click="按钮_阻止扩展()">按钮_阻止扩展</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+    <!-- </dl> -->
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }
+    let ppp = {}
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        按钮_ppp() {
+          ppp = new Proxy(obj, {
+            getOwnPropertyDescriptor: function (target, prop) {
+              console.log('called: ' + prop);
+              // return { configurable: true, enumerable: true, value: 10 };
+              // value: 1, //值
+              // writable: true,是否可写
+              // enumerable: true, 是否可 历 forin
+              // configurable: true 是否可改写
+              return Reflect.getOwnPropertyDescriptor(target, prop)
+            },
+            // setPrototypeOf(target, newProto) {
+            //   return false;
+            // }
+
+
+
+
+
+
+
+
+
+          })
+
+        },
+
+
+
+        async 按钮_获取属性描述() {
+          let res = Reflect.getOwnPropertyDescriptor(ppp, "a")
+          console.log('按钮_获取属性描述=>ppp:222', res)
+        },
+
+        async 按钮_修改原型链() {
+          let res = Reflect.setPrototypeOf(ppp, [])
+          console.log('按钮_修改原型链=>res:结果', res)
+          console.log('按钮_修改原型链=>ppp:结果', ppp)
+          console.log('按钮_修改原型链=>ppp:修改',)
+          ppp.push("aaaaaaaaaa")
+          console.log('按钮_修改原型链=>ppp:修改', ppp)
+        },
+
+        async 按钮_获取原型链() {
+          let res = Reflect.getPrototypeOf(ppp)
+          console.log('按钮_获取原型链=>ppp:结果', res)
+        },
+
+
+        async 按钮_是否可扩展() {
+          console.log('是否可扩展=>ppp:', Reflect.isExtensible(ppp))
+        },
+        async 按钮_阻止扩展() {
+          console.log('阻止扩展=>ppp:', Reflect.preventExtensions(ppp))
+        },
+
+
+
+
+
+        async 按钮_打印() {
+          console.log('目标=>obj:111', obj)
+          console.log('目标=>ppp:222', ppp)
+        },
+
+
+      }
+    })
+  </script>
+</body>

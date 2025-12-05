@@ -1,0 +1,228 @@
+<meta charset="UTF-8">
+<title>10视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?p=25&spm_id_from=pageDriver</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="dayjs" src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+</style>
+
+<body>
+    <DL id="root">
+        <HEADER class='mb-10 mt-10 flex-居中水平 fw-3 fz-20  f-blue-600 '>空标题</HEADER>
+        <div v-for="(item,index)  in arr">
+            <img style="width: 100px;" :src="item.url" alt="">
+            <span>{{index+1}}</span>
+            <span>{{item.url}}</span>
+        </div>
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                arr: [
+                    {
+                        "name": "详情1.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01s7eiZu2J7nnCUmbn6_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情2.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN010j58yC2J7nnK5fmKU_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情3.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i3/3676189375/O1CN01BVra0O2J7nnJPX6jc_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情4.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN014JnExx2J7nnHupSCx_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情5.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i3/3676189375/O1CN01wnS2zR2J7nnBvrziW_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情6.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01asSEsj2J7nnFgcx1n_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情7.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01XTLxyX2J7nnHunRWt_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情8.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01kLNPKX2J7nnBvsrp3_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情9.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01KZBpig2J7nnERaX3b_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情10.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN011Kxsbc2J7nnLWkSYX_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情11.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01Xrijq72J7nnIPTQl2_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情12.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01WYXhcX2J7nnH6SlVE_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情13.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN013gPbIp2J7nnK5kH8N_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情14.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01KGIu3q2J7nnAYsg8I_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情15.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01qjOvGC2J7nnAYrL0F_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情16.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01AkeTI52J7nnAYt55S_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情17.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01fdyfWJ2J7nnLWlKej_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情18.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01KrUSBu2J7nnHurbPA_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情19.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01ZhgXmJ2J7nnHus8g0_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情20.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN011TWocu2J7nnBvxZ1k_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情21.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN016KCZ1K2J7nnH6TlwH_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情22.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN012cEKl42J7nnEVACuO_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情23.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01kasbcY2J7nnKvyNH9_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情24.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i3/3676189375/O1CN018C3QNm2J7nnIPVyrp_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情25.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i3/3676189375/O1CN01KFcTTb2J7nn5qSpua_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情26.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01sxAxNh2J7nnIPWFWS_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情27.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01WRqClY2J7nnBvxIS7_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情28.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01Vqd0aA2J7nnAYutSQ_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情29.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01uqkASY2J7nnEylSq7_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情30.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN013uKtv92J7nnHurCZD_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情31.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01yC0wcL2J7nnLWn4vp_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情32.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01VfdeiO2J7nnLWngMJ_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情33.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i4/3676189375/O1CN01K5jRsa2J7nnJPeQG8_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情34.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01UxGfwn2J7nnFgjWiy_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情35.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i2/3676189375/O1CN01wwGU3H2J7nnFgk8AS_!!3676189375.jpg"
+                    },
+                    {
+                        "name": "详情36.jpg",
+                        "url": "https://img.alicdn.com/imgextra/i1/3676189375/O1CN01CVlTn22J7nnH6XnU1_!!3676189375.jpg"
+                    }
+                ]
+            },
+            methods: {
+                async 打印() {
+                    console.log('111>222:', 333)
+                }, ////
+                async 方法1_() {
+                    function myInstanceof(target, constructor) {
+                        const baseType = ['string', 'number', 'boolean', 'undefined', 'symbol']
+                        if (baseType.includes(typeof (target))) {
+                            return false
+                        }
+                        //原型链其实就是个对象组成的链表，遍历这个链表，
+                        let prototype = Object.getPrototypeOf(target);
+                        console.log('prototype>222:', prototype)
+                        while (prototype) {
+                            //一旦链上有对象有符合，就返回true
+                            if (prototype === constructor.prototype) {
+                                return true
+                            } else {
+                                prototype = Object.getPrototypeOf(prototype)
+                            }
+                        }
+                        return false
+                    }
+                    console.log(myInstanceof([{
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: 111
+                    }], Array))
+
+
+                },
+                ////
+
+
+
+
+
+            }, //////
+            async mounted() {
+                // this.方法111()
+            },
+        })
+    </script>
+</body>
+
+<!-- 
+
+css:
+vis_val:
+val:
+col:
+row
+
+ -->

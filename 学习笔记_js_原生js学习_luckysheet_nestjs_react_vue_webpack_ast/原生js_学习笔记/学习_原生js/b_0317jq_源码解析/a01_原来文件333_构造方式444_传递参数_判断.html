@@ -1,0 +1,99 @@
+<meta charset="UTF-8">
+<title>视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?spm_id_from=333.337.search-card.all.click</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button class="按钮_打印" type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+        <el-button type="primary" size="mini" @click="方法111()">方法111</el-button>
+        <el-button type="primary" size="mini" @click="方法222()">方法222</el-button>
+        <iframe name="网站" src="https://www.junchenlun.com/login.html" style="width: 500px;height:500px"
+            frameborder="0"></iframe>
+        <iframe name="图片" src="./gif.gif" style="width: 500px;height:500px" frameborder="0"></iframe>
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {},
+            methods: {
+                async 按钮_打印() {
+                    console.log('333>get:', 111)
+                }, ////
+                async 方法111() {
+                    (function () {
+                        //1
+                        var jq = function () {
+                            return new jq.prototype.init(dom)
+                        }
+                        //2
+                        jq.prototype = {
+                            init: function () {
+                                return document.querySelector(dom)
+                            },
+                            css: function () {
+                                alert()
+                            }
+                        }
+
+                        //3
+                        // window.$ = $ = jquery = jQuery = jq
+                        window.jq = jq
+
+                    })()
+
+
+                }, ////
+                async 方法222() {
+                    function aaa(params) {
+
+                    }
+
+                    // aaa.prototype.constructor = aaa   //js自动会成功 这段代码
+                    aaa.prototype.constructor = Array //  可以修改指向  比如数组
+                    aaa.prototype.name = "许鹏" //  可以修改指向  比如数组
+                    aaa.prototype.age = 30 //  可以修改指向  比如数组
+                    aaa.prototype = { //这种写法会 覆盖   {}  覆盖了    aaa.prototype ,变成了Object
+                        name: "许鹏22",
+                        age: 333
+                    } //  可以修改指向  比如数组
+                    // aaa.prototype.constructor = Array //  可以修改指向  比如数组
+                    aaa.prototype.constructor = aaa //js自动会成功 这段代码
+
+
+                    //2判断
+                    // aaa(this) //传递 this
+                    // aaa(document) //传递 dom 
+
+                    // aaa("li") //传递 简写标签
+                    // aaa("<li>") //传递 标签
+                    // aaa([]) //传递 数字
+                    // console.log('111>222:', contentWindow.document)
+                    console.log('111>网站:', window.frames["网站"])   
+                    // console.log('222>网站:', window.frames["网站"].contentWindow)
+
+                    $("div", contentWindow.document) //iframe 框架   [contentWindow.document] 作用域 上下文   own自己的
+
+
+
+                }, ////
+
+
+            }, //////
+            async mounted() {
+                this.方法111()
+            },
+        })
+    </script>
+</body>

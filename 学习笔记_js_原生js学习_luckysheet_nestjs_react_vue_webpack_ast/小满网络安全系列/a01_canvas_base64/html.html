@@ -1,0 +1,81 @@
+<meta charset="UTF-8" />
+<title>视频 https://www.bilibili.com/video/BV1eZ4y1C7Jc</title>
+<title>文章 https://www.bilibili.com/read/cv16329382</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet" />
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+<!-- <script class="迅雷下载" src="http://open.thunderurl.com/thunder-link.js"></script> -->
+<!-- <script class="函数延迟" src="../函数延迟.js"></script> -->
+
+<style>
+    img {
+        width: 100px;
+        border: 1px red solid;
+        margin: 4px;
+    }
+
+    #root {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<body>
+    <NAV id="root">
+        <div>
+            <el-button type="primary" @click="按钮01_()">按钮01_</el-button>
+            <el-button type="primary" @click="按钮02_()">按钮02_</el-button>
+            <el-input style="width:200px" v-model="base64"></el-input>
+        </div>
+        <img src="//gw.alicdn.com/bao/uploaded/i3/45812551/O1CN01Av5PlR1UiP9VtFIIw_!!0-saturn_solar.jpg">
+        <img :src="base64">
+
+    </NAV>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                msg: "我是小许",
+                base64: ""
+            },
+            methods: {
+                async 按钮01_() {
+                    let canvas = document.createElement('canvas');
+                    let ctx = canvas.getContext('2d');
+                    let txt = '我的test';
+                    ctx.fillText(txt, 100, 100)
+                    let base64_toDataURL = canvas.toDataURL()
+                    this.base64 = base64_toDataURL
+
+                    console.log('111>222:', this.base64)
+                    return md5(canvas.toDataURL())
+                }, //
+                async 按钮02_() {
+                    var c = document.createElement('canvas');
+                    var ctx = c.getContext("2d");   //获取canvs上下文
+                    ctx.font = "20px Georgia"; //设置填充文字样式
+                    ctx.fillText("Hello World", 10, 50);  //设置文字及其位置
+                    ctx.font = "30px Verdana"     //设置线性渐变色
+                    var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+                    gradient.addColorStop("0", "magenta")
+                    gradient.addColorStop("0.5", "blue")
+                    gradient.addColorStop("1.0", "red")
+                    ctx.fillStyle = gradient;
+                    ctx.fillText("Big smile!", 10, 90)
+
+                    let base64_toDataURL = c.toDataURL()
+                    this.base64 = base64_toDataURL
+                    console.log('222>222:', this.base64)
+
+                }, //
+
+            }, //////
+            async mounted() { },
+        });
+    </script>
+</body>

@@ -1,0 +1,127 @@
+<meta charset="UTF-8">
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_00_网络请求()">方法_00_网络请求</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_111_xhr_成功()">方法_111_xhr_成功</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_222()">方法_222</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="例子_call_apply_bind_可以调用函数_改变this()">例子_call_apply_bind_可以调用函数_改变this
+    </el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    var obj = {}; let ppp = {}; let jq = $
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 方法_00_网络请求() {
+          let url = `http://120.25.224.61:9001/test_post`
+          let res = await axios.post(url, { aaa: 1, bbb: 2 })
+          console.log('test_post=>res:', res.data)
+
+        },//--
+        async 方法_111_xhr_成功() {
+          // 开始时候
+          const on_opn = XMLHttpRequest.prototype.open
+          XMLHttpRequest.prototype.open = function (aaa, url, ccc) {
+            if (url.indexOf("queryDailyReport") > 1) {
+              console.log('222=>一:', url)
+              window.postMessage({ "url": "信息" }, "*");
+            }
+            return on_opn.apply(this, arguments)
+          }
+          // 发送时候
+          const on_send = XMLHttpRequest.prototype.send
+          XMLHttpRequest.prototype.send = function (data_send) {
+            this.addEventListener('load', function () {
+              // console.log('发送的数据=>一:', data_send)
+              // console.log("this", this)
+              console.log('response=>一:', this.response)
+
+            })
+            return on_send.apply(this, arguments)
+          }
+
+
+          // 监听通信
+          window.addEventListener("message", e => {
+            console.log("受到");
+            console.log(e);
+          })
+
+        },//-
+
+        async 方法_222() {
+          // https://codingdict.com/questions/85124
+          var responseText = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, 'responseText');
+          Object.defineProperty(XMLHttpRequest.prototype, 'responseText', {
+            get: function () {
+
+
+              if (this.responseURL.indexOf("/api/unit/listPage") > 1) {
+
+                console.log('response=>一:', this)
+                // console.log('response=>一:', JSON.parse(this.response))
+                console.log("----------------------------")
+              }
+              // console.log('response=>一:', this)
+
+
+              return responseText.get.call(this);
+            },
+
+            set: function (str) {
+              // console.log('set setsetset: %s', str);
+              // console.log('set this: %s', this);
+              // return responseText.set.call(this, str);
+            },
+            configurable: true
+          });
+
+        },//-
+
+
+
+
+
+
+
+
+        async 例子_call_apply_bind_可以调用函数_改变this() {
+          let 猫 = { name: "猫猫" }
+          function 函数(xxx, yyy) {
+            console.log('函数=>this:', this)
+            console.log('函数=>xxx:yyy', xxx, yyy)
+          }
+          函数.call(猫, "鱼", "猫食")// 传参     "鱼","猫食"    依次传递
+          函数.apply(猫, ["鱼", "猫食"])// 传参  ["鱼","猫食"] 数组传递
+          let 函数bind = 函数.bind(猫, "鱼", "猫食")// 传参  ["鱼","猫食"] 数组传递
+          函数bind()
+        },//--
+
+      }
+    })
+  </script>
+</body>

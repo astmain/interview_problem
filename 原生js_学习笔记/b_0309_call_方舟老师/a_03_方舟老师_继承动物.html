@@ -1,0 +1,89 @@
+
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_call_继承()">按钮_call_继承</el-button>
+
+
+
+
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    function 函数111() {
+      return "函数111"
+    }
+
+    function 函数sum111(a, b) {
+      return a + b
+    }
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_call_继承() {
+          function 动物() {
+            this.name = "动物"
+            this.吃 = function (params) {
+              console.log('111=>吃:', "吃东西")
+            };
+
+          }
+          function 猫科() {
+            this.name = "猫科"
+            this.吃 = function (params) {
+              console.log('111=>吃:', "吃东西")
+            };
+
+          }
+
+          function 猫() {
+            动物.call(this)//继承
+
+
+          }
+
+          let 猫111 = new 猫()
+
+          console.log('111=>111:', 猫111)
+
+
+
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

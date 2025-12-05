@@ -1,0 +1,160 @@
+<meta charset="UTF-8">
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<!-- <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+<!-- <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_00_网络请求()">方法_00_网络请求</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_111_xhr_成功()">方法_111_xhr_成功</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="方法_222()">方法_222</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="例子_call_apply_bind_可以调用函数_改变this()">例子_call_apply_bind_可以调用函数_改变this
+    </el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    var obj = {}; let ppp = {}; let jq = $
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+
+        async 方法_00() {
+          function 函数1() {
+            window.DATA = []
+            console.error(`注入代码>1:函数1`)
+            const on_send = XMLHttpRequest.prototype.send
+            XMLHttpRequest.prototype.send = function (send_data) {
+              this.addEventListener('load', function () {
+                // debugger
+                if (this.responseURL.indexOf("h5api.m.1688.com/h5/mtop.1688.shop.data.get") > 1) {
+                  let response = JSON.parse(this.responseText)
+                  console.log('response>1:', response)
+                  DATA.push(response)
+                  // debugger
+                }
+              })
+              return on_send.apply(this, arguments)
+            }
+            return "成功>函数_注入hook"
+          }
+          函数1()
+          console.log('111>window.DATA:', window.DATA)
+          jq("html").append(`<script class="函数1" >( ${函数1})()<\/script>`)
+          await 浏览器_注入当前页面(函数1)
+
+        },//
+        async 方法_00_网络请求() {
+          let url = `http://120.25.224.61:9001/test_post`
+          let res = await axios.post(url, { aaa: 1, bbb: 2 })
+          console.log('test_post=>res:', res.data)
+
+        },//--
+        async 方法_111_xhr_成功() {
+          // 开始时候
+          const on_opn = XMLHttpRequest.prototype.open
+          XMLHttpRequest.prototype.open = function (aaa, url, ccc) {
+            if (url.indexOf("queryDailyReport") > 1) {
+              console.log('222=>一:', url)
+              window.postMessage({ "url": "信息" }, "*");
+            }
+            return on_opn.apply(this, arguments)
+          }
+          // 发送时候
+          const on_send = XMLHttpRequest.prototype.send
+          XMLHttpRequest.prototype.send = function (data_send) {
+            this.addEventListener('load', function (aaa) {
+              // console.log('111>data_send:', data_send)
+              // console.log('222>aaa:', aaa)
+              // console.log('333>this:', this)
+
+              if (this.responseURL.indexOf("queryDailyReport") >= 1 || this.responseURL.indexOf("goodsList") >= 1 || this.responseURL.indexOf("d") >= 1) {
+
+                console.log('444>responseURL:', this.responseURL)
+                try {
+                  console.log('res=>一:', JSON.parse(this.response))
+                } catch (error) {
+                  console.log('res=>一:', {})
+                }
+              }
+
+            })
+            return on_send.apply(this, arguments)
+          }///
+
+
+          // 监听通信
+          window.addEventListener("message", e => {
+            console.log("受到");
+            console.log(e);
+          })
+
+        },//-
+
+        async 方法_222() {
+          // https://codingdict.com/questions/85124
+          var responseText = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, 'responseText');
+          Object.defineProperty(XMLHttpRequest.prototype, 'responseText', {
+            get: function () {
+              console.log('response=>一:', this)
+              console.log('111>body:', JSON.parse(this.__sentry_xhr__.body))
+              console.log('111>responseText:', JSON.parse(this.responseText))
+
+
+              return responseText.get.call(this);
+            },
+
+            set: function (str) {
+              // console.log('set setsetset: %s', str);
+              // console.log('set this: %s', this);
+              // return responseText.set.call(this, str);
+            },
+            configurable: true
+          });
+
+        },//-
+
+
+
+
+
+
+
+
+        async 例子_call_apply_bind_可以调用函数_改变this() {
+          let 猫 = { name: "猫猫" }
+          function 函数(xxx, yyy) {
+            console.log('函数=>this:', this)
+            console.log('函数=>xxx:yyy', xxx, yyy)
+          }
+          函数.call(猫, "鱼", "猫食")// 传参     "鱼","猫食"    依次传递
+          函数.apply(猫, ["鱼", "猫食"])// 传参  ["鱼","猫食"] 数组传递
+          let 函数bind = 函数.bind(猫, "鱼", "猫食")// 传参  ["鱼","猫食"] 数组传递
+          函数bind()
+        },//--
+
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>xhr样例</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="./public/element.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>111
+  <div class="xhr444">
+  </div>
+  <button onclick="按钮axios()">按钮axios</button>
+  <button onclick="按钮()">按钮</button>
+  <el-button @click="按钮222()">按钮222</el-button>
+  视频地址 https://www.bilibili.com/video/BV1gq4y1T7iF?spm_id_from=333.999.0.0
+  源码 https://bbs.tampermonkey.net.cn/thread-839-1-1.html
+  小例子 https://bbs.tampermonkey.net.cn/thread-752-1-1.html
+
+  xhr源码 https://bbs.tampermonkey.net.cn/thread-752-1-1.html
+
+</body>
+
+
+<script>
+  var aaa = ""
+  var bbb = ""
+  new Vue({
+    el: ".xhr444",
+    methods: {
+      按钮222() {
+        console.log(' 111: ', '按钮222')
+      }
+    }
+  })
+
+  async function 按钮axios() {
+    res = await axios.get('http://127.0.0.1:8888/', {
+      aaa: 111
+    })
+    console.log('333:--res', res)
+  }
+
+  function 按钮() {
+    console.log('aaa:--', aaa)
+    console.log('bbb:--', bbb)
+  }
+
+  //=========================================
+  var oldxhr = window.XMLHttpRequest
+
+  function newobj() {
+  }
+
+  window.XMLHttpRequest = function () {
+    let tagetobk = new newobj();
+    tagetobk.oldxhr = new oldxhr();
+    let handle = {
+      get: function (target, prop, receiver) {
+        // console.log('666prop:--', prop)
+        // console.log('666typeof:--', typeof (prop))
+        // console.log('666target:--', target)
+        if (prop === 'oldxhr') {
+          return Reflect.get(target, prop);
+        }
+        if (typeof Reflect.get(target.oldxhr, prop) === 'function') {
+          if (Reflect.get(target.oldxhr, prop + 'proxy') === undefined) {
+            target.oldxhr[prop + 'proxy'] = (...funcargs) => {
+              let result = target.oldxhr[prop].call(target.oldxhr, ...funcargs)
+              // console.log('函数劫持获取结果', result)
+              aaa = result
+              return result;
+            }
+          }
+          return Reflect.get(target.oldxhr, prop + 'proxy')
+        }
+        if (prop.indexOf('response') !== -1) {
+          if (target.oldxhr.responseURL.indexOf("88") > 1) {
+            // console.log('777:--', target.oldxhr.responseURL)
+            bbb = Reflect.get(target.oldxhr, prop)
+          }
+          return Reflect.get(target.oldxhr, prop)
+        }
+        //----------------------
+        return Reflect.get(target.oldxhr, prop);
+
+
+      },
+
+
+      set(target, prop, value) {
+        return Reflect.set(target.oldxhr, prop, value);
+      },
+
+    }
+
+    let ret = new Proxy(tagetobk, handle);
+    return ret;
+  }
+</script>
+
+</html>

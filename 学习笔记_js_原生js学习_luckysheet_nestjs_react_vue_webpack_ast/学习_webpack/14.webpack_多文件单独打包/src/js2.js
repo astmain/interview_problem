@@ -1,0 +1,1 @@
+let jq = require("jquery")

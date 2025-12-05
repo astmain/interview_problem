@@ -1,0 +1,90 @@
+<meta charset="UTF-8">
+<title>10视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?p=25&spm_id_from=pageDriver</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+</style>
+
+<body>
+    <DL id="root">
+        <br></br>
+        <el-button class="cls_打印" size="mini" @click="打印()">打印</el-button>
+        <el-button type="primary" size="mini" @click="方法111()">方法111</el-button>
+        <el-button type="primary" size="mini" @click="方法222_map_原生jq回调学习()">方法222_map_原生jq回调学习</el-button>
+        <el-button type="primary" size="mini" @click="方法333_模仿_map_原生jq回调学习()">方法333_模仿_map_原生jq回调学习</el-button>
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {},
+            methods: {
+                async 打印() {
+                    console.log('111>222:', 333)
+                }, ////
+                async 方法111() {
+
+                },
+                ////
+                async 方法222_map_原生jq回调学习() {
+                    var arr = [1, 2, 3, 4, 5]
+
+                    arr = $.map(arr, function (o) {
+                        return o + 1
+                    })
+
+                    console.log('111>arr:', arr)
+
+
+                }, ////
+                async 方法333_模仿_map_原生jq回调学习() {
+                    var arr = [1, 2, 3, 4, 5]
+
+                    arr = 函数(arr, function (o, index) {
+                        console.log('index:', index)
+                        return [1, 2]
+                    })
+                    console.log('111>arr:', arr)
+
+                    function 函数(elems, callback) {
+                        var retVal,
+                            ret = [],
+                            i = 0,
+                            length = elems.length
+
+
+                        for (; i < length; i++) {
+                            let ele = arr[i]
+                            // 理解    (elems[i], i)   相当于 o   , i 相当于 index
+                            retVal = callback(elems[i], i)
+
+                            ret.push(retVal)
+
+                        }
+
+                        return ret
+
+
+
+
+                    }
+
+
+
+                }, ////
+
+
+
+            }, //////
+            async mounted() {
+                this.方法111()
+            },
+        })
+    </script>
+</body>

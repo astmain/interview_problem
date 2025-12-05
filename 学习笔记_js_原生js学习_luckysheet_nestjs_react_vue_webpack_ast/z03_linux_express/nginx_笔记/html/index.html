@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to nginx!</h1>
+    <button onclick="btn1()">btn1</button>
+    <button onclick="btn2()">btn2</button>
+    <button onclick="btn3()">btn3</button>
+
+
+</body>
+<script>
+
+    let btn1 = async () => {
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://120.25.224.61:9001/word_02_info?user_id=1111&title=aaa%20%E8%B7%91%E6%AD%A5%E9%9E%8B%20%E8%B7%91%E6%AD%A5%E9%9E%8B%20%E8%BF%90%E5%8A%A8%E9%9E%8B%20%E8%BF%90%E5%8A%A8%E9%9E%8B%20%E7%94%B7%E7%BD%91%E9%9D%A2%E9%80%8F%E6%B0%94')
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.send(null)
+    }
+    // ----------------------
+    let btn2 = async () => {
+        console.log('111>222:',)
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://8.134.38.36:8765/index')
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.send(null)
+    }
+    // ----------------------
+    let btn3 = async () => {
+        console.log('111>btn3:',)
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', '/api/no1')
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+        xhr.send(null)
+    }
+
+</script>
+
+</html>

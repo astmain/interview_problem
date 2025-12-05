@@ -1,0 +1,17 @@
+rpc
+通讯+调用
+
+程序A (加密)  程序B
+
+内存共享        (本地Rpc)
+发送窗口消息    (本地Rpc) 长度有限制
+串口通讯        com口
+通讯管道        (本地Rpc)  (防止多开)   对我们不可见
+网路  tcp/ip    (远程Rpc)   是否跨电脑
+
+
+
+浏览器(http ws)    任意语言开发软件
+远程调试协议
+Chrome DevTools谷歌浏览器开发者工具远程调试协议
+https://www.cnblogs.com/breakyizhan/p/13282613.html

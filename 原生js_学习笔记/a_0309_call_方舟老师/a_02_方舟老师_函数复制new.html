@@ -1,0 +1,99 @@
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_new111()">按钮_new111</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_new222()">按钮_new222</el-button>
+    <br></br>
+
+
+
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    function 函数111() {
+      return "函数111"
+    }
+
+    function 函数sum111(a, b) {
+      return a + b
+    }
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_new111() {
+          function 猫() {
+            this.叫 = () => {
+              console.log('222=>叫:', "叫喵")
+            }
+            return true
+          }
+          let 猫111 = 猫
+          猫.吃 = (params) => { console.log('猫=>>>吃') }
+          猫111.吃 = (params) => { console.log('猫111=>>>吃') }
+
+
+          console.log('猫=>111:', 猫)
+          console.log('猫111=>111:', 猫111)
+
+
+        },
+
+        async 按钮_new222() {
+          function 猫() {
+            this.叫 = () => {
+              console.log('222=>叫:', "叫喵")
+            }
+            return true
+          }
+
+          let 猫111 = new 猫()
+          猫.吃 = (params) => { console.log('猫=>>>吃') }
+          猫111.吃 = (params) => { console.log('猫111=>>>吃') }
+          // console.log('猫=>:', 猫)
+          // console.log('猫111=>:', 猫111)
+          // console.log('猫111()=>:', 猫111())
+
+          // console.log('猫=>111:', 猫)
+          // console.log('猫111=>111:', 猫111)
+
+          console.log('猫=>111:', 猫)
+          console.log('猫111=>222:', 猫111)
+
+        },
+
+
+
+
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

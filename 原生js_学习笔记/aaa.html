@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue.js模版</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-button type="primary" size="default" @click="按钮()">按钮</el-button>
+    <el-button type="primary" size="default" @click="按钮异步()">按钮异步</el-button>
+    <el-button type="primary" size="default" @click="按钮post()">按钮post</el-button>
+    <el-button type="primary" size="default" @click="get9001()">get9001</el-button>
+
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+        async 按钮() {
+          console.log('111=>111:', 111)
+          let url = "http://120.25.224.61:9001/" + 'word_01_middle' + "?" + "user_id=" + '234578' + "&" + "word_long=" + "我的你的鞋子"
+          fetch(url).then(function (response) {
+
+            console.log('response=>111:', response)
+            // console.log(' response.json()=>111:', response.json())
+
+            return response.json();
+          }).then(function (data) {
+            console.log(data);
+          }).catch(function (e) {
+            console.log("Oops, error");
+          })
+        },
+
+        async 按钮异步() {
+          const fetchAPI = async () => {
+            const response = await fetch(url)
+            const data = await response.json()
+            // console.log(data)
+            return data
+          }
+          let url = "http://120.25.224.61:9001/" + 'word_01_middle' + "?" + "user_id=" + '234578' + "&" + "word_long=" + "我的你的鞋子"
+          let res = await fetchAPI(url)
+          console.log('res=>111:', res)
+        },
+
+        async 按钮post() {
+          const user = { name: 'John', surname: 'Smith' };
+          const response = await fetch('/article/fetch/post/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(user)
+          });
+
+
+          console.log('response=>111:', response)
+        },
+
+        async get9001() {
+          const fetchAPI = async () => {
+            const response = await fetch(url)
+            const data = await response.json()
+            // console.log(data)
+            return data
+          }
+          // let url = "http://120.25.224.61:9001/test_get?""word_long=" + "我的你的鞋子"
+          let url = `http://120.25.224.61:9001/test_get?text=11111`
+          let res = await fetchAPI(url)
+          console.log('res=>111:', res)
+        },
+
+
+      },
+      mounted() {
+
+      },
+    })
+  </script>
+
+
+</body>
+
+</html>
+<style>
+
+</style>

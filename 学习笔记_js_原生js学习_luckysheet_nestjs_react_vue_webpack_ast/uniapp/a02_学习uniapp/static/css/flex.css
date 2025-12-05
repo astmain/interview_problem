@@ -1,0 +1,33 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  /* 列 排练*/
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  /* 列 排练*/
+}
+
+.between {
+  justify-content: space-between;
+}
+
+
+.x {
+display: flex;
+  justify-content: center;
+  /*水平居中*/
+}
+
+.y {
+  display: flex;
+  align-items: center;
+  /*垂直居中*/
+}
+.flex-nowrap{
+	/* 规定段落中的文本不进行换行： */
+	white-space: nowrap;
+}
+

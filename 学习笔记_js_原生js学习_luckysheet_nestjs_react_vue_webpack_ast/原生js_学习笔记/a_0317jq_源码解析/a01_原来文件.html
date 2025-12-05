@@ -1,0 +1,138 @@
+<meta charset="UTF-8">
+<title>视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?spm_id_from=333.337.search-card.all.click</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+
+</style>
+
+<body>
+<DL id="root">
+    <br></br>
+    <el-button class="按钮_打印" type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+    <el-button type="primary" size="mini" @click="方法111()">方法111</el-button>
+    <el-button type="primary" size="mini" @click="方法222()">方法222</el-button>
+</DL>
+<!-- -------------------------------------------------------------------------------------------------- -->
+<script>
+    let app = new Vue({
+        el: " #root ",
+        data: {},
+        methods: {
+            async 按钮_打印() {
+
+            }, ////
+            async 方法111() {
+                (function () {
+                    //1
+                    var jq = function () {
+                        return new jq.prototype.init(dom)
+                    }
+                    //2
+                    jq.prototype = {
+                        init: function () {
+                            return document.querySelector(dom)
+                        },
+                        css: function () {
+                            alert()
+                        }
+                    }
+
+                    //3
+                    // window.$ = $ = jquery = jQuery = jq
+                    window.jq = jq
+
+                })()
+
+
+            }, ////
+            async 方法222() {
+                console.log('111> $:', $)
+                console.log('222>jq:', jq)
+
+                console.log('333>get:', $(".按钮_打印").get(0))
+                console.log('333>get_typeof:', typeof ($(".按钮_打印").get(0)))
+
+                var aaa = 1
+                console.log('444>width:', $(".按钮_打印").get(0).offsetWidth)
+
+
+
+                // (96 , 283)给JQ对象,添加一些方法和属性
+
+                // (285 , 347) extend : JQ的继承方法
+
+                // (349  817) jQuery.extend () :扩展一些工具方法
+
+                // (877  2856) sizzle :复杂选择器的实现
+
+                // (2880 , 3042) Callbacks :回调对象:对函数的统一管理
+
+                // (3043   3183) Deferred :延迟对象:对异步的统一管理
+
+                // (3184   3295) support :功能检测
+
+
+
+                //        data 方法存储值       3308   3652
+                var name111 = $(".按钮_打印").data("name", "aaaaaaaaaaaa")
+                var name222 = $(".按钮_打印").data("name")
+
+                // 队列管理  queue     3653  3797
+                //111
+
+                // attr()  prop() val()  addClass()   对元素的属性操作   3803  4299
+                //222
+
+                // on() trigger()  事件操作的相关方法   4300 5128
+                //333
+
+                // css()  样式操作  6058  6220
+
+
+                //   提交数据 ajax       load()  getjson()                  6621  7854
+
+
+
+                //  animate()   运动方法               7855   8584
+
+
+
+                //        offset()    位置 尺寸距离      8585 8792
+
+
+                // jq    支持模块局        8804  8792
+
+
+                //
+
+
+
+                // dom操作 删除 获取 包装 dom筛选   5140 657
+                //444
+
+
+
+
+                // window.jquery       8826
+
+
+
+
+                var zzz = 1111
+            }, ////
+
+
+        }, //////
+        async mounted() {
+            this.方法111()
+        },
+    })
+</script>
+</body>

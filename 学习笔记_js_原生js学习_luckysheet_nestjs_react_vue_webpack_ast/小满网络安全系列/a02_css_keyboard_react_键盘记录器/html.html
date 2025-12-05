@@ -1,0 +1,35 @@
+<meta charset="UTF-8" />
+<title>视频 https://www.bilibili.com/video/BV1eZ4y1C7Jc?p=2</title>
+<title>文章 https://www.bilibili.com/read/cv16346229</title>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+
+<link rel="stylesheet" href="./css_keyboard.css">
+<style>
+
+</style>
+
+<body>
+    <div id="app">
+        <button>按钮01_</button>
+
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+  
+    <script type="text/babel">
+        const Ipt = React.createElement(() => {
+            const { useState } = window.React;
+            const [state, setState] = useState({ val: "123" })
+            const setInput = (e) => {
+                setState({
+                    val: e.target.value
+                })
+            }
+            return <input type="password" onChange={setInput} value={state.val}></input>
+        })
+        ReactDOM.render(Ipt, document.getElementById('app'))
+    </script>
+
+</body>

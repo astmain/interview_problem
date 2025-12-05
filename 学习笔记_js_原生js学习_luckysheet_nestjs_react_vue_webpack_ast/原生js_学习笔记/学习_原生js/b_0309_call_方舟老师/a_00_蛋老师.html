@@ -1,0 +1,96 @@
+<title>文档 https://www.bilibili.com/video/BV1m54y1q7hc?spm_id_from=333.337.search-card.all.click</title>
+<!-- <title>视频 https://www.bilibili.com/video/BV1su411X7Lr?spm_id_from=333.999.0.0</title> -->
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_call()">按钮_call</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_newcall()">按钮_newcall</el-button>
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    function 函数111() {
+      return "函数111"
+    }
+
+    function 函数sum111(a, b) {
+      return a + b
+    }
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_call() {
+          function Product() {
+
+            // this.name = "Product_name";
+            // this.price = "Product_price";
+            // console.log(' this.name =>111:', this.name)
+            // ------------
+            // let name = "Product_name";
+            // let price = "Product_price";
+            console.log('000Product=>this.name:', this.name)
+          }
+
+          let obj = { name: "鸡蛋" }
+          //1.Function.prototype  2.Function构造函数   添加同样的方法
+
+          Product.call(obj)
+        },
+
+        async 按钮_newcall() {
+          Function.prototype.newcall = function (obj) {
+            // console.log('111 obj=>111:', obj)
+            // console.log('222 this=>111:', this)
+            // console.log('333 this=>111:', typeof (this))
+            // console.log('444 this=>111:', this())
+            console.log('555 this=>111:', this + "")
+            obj.新p = this
+
+
+          }
+          let 对象 = { name: "鸡蛋" }
+          function Product() {   //       1.Function.prototype  2.Function构造函数   添加同样的方法
+            console.log('444 this.name =>111:', this.name)
+          }
+
+
+          Product.newcall(对象)
+
+
+          console.log('对象=>111:', 对象)
+
+        },
+
+
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

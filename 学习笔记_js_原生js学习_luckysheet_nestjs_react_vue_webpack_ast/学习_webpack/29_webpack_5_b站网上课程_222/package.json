@@ -1,0 +1,37 @@
+{
+  "name": "aaa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aaaa copy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.19.1",
+    "axios": "^0.27.2",
+    "lodash": "^4.17.21",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "dayjs": "^1.10.7",
+    "element-plus": "^2.2.17",
+    "file-saver": "^2.0.5",
+    "jquery": "^3.6.0",
+    "jszip": "^3.7.1",
+    "mini-css-extract-plugin": "^2.6.1",
+    "pinia": "^2.0.20",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "vue": "^3.2.13",
+    "vue-loader": "^17.0.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "devDependencies": {
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.7"
+  }
+}

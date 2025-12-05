@@ -1,0 +1,94 @@
+<meta charset="UTF-8">
+<title>视频 2.0.3的jq版本 https://www.bilibili.com/video/BV1UW41137xP?spm_id_from=333.337.search-card.all.click</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+
+<style>
+    p a {
+        display: block;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        background: #FF3366;
+        color: #fff;
+        border-radius: 3px;
+        text-align: center;
+    }
+
+    #tooltip {
+        padding:10;
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid #ccc;
+        text-align: center;
+        box-shadow: 1px 1px 2px #ccc;
+        background: #fff;
+        border-radius: 5px;
+        position: fixed;
+    }
+</style>
+
+<body>
+    <DL id="root">
+
+
+
+        <el-button type="primary" size="default" @click="方法111()">方法111</el-button>
+        <h1>----------------------------</h1>
+
+        <p><a href="#" title="超链接提示1" class="tooltip">提示1</a></p>
+        <p><a href="#" title="超链接提示2" class="tooltip">提示2</a></p>
+
+    </DL>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                msg: "我是小许"
+            },
+            methods: {
+                方法111() {
+                    $(function () {
+                        //#1使得鼠标相对于tooltip偏离的距离
+                        var x = 10, y = 20;
+                        $("a.tooltip").mouseover(function (e) {
+                            this.myTitle = this.title;//获取title，临时存储
+                            this.title = "";//避免和原生提示重复
+
+                            var tooltip = "<div id='tooltip'>" + this.myTitle + "</div>";
+                            $("body").append(tooltip);
+                            //css()设置样式
+                            $("#tooltip").css({
+                                "top": (e.pageY + y) + "px",//e.pageX相对与文档，e.clientX相对于可视区
+                                "left": (e.pageX + x) + "px",
+                            }).show("fast");
+                        }).mouseout(function () {
+                            this.title = this.myTitle;//重复恢复
+                            $("#tooltip").remove();//记得要把生成的结点移除掉
+                        }).mousemove(function (e) {
+                            $("#tooltip").css({
+                                "left": (e.pageX + x) + "px",
+                                "top": (e.pageY + y) + "px",
+                            });
+                        });
+                    });
+
+
+                }
+            }, //////
+            async mounted() {
+
+            },
+        })
+    </script>
+</body>

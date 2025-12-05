@@ -1,0 +1,72 @@
+<meta charset="UTF-8" />
+<title>
+    javascript参数校验(json-schema/ajv)
+    https://www.jianshu.com/p/6a07728f9de9
+    https://blog.csdn.net/mengshang529/article/details/106067832/
+</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+
+<style>
+    .爷爷1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .爸爸1 {
+        display: flex;
+        /* flex-direction: row; */
+        /* flex-direction: column; */
+        align-items: center;
+    }
+
+    .儿子1 {}
+</style>
+
+<body>
+    <dl id="root">
+
+
+        <NAV class="爷爷1" style="width:300px; height:150px ;border: 1px solid red;">
+            <!-- <DIV class="爸爸1" style=" width:100px;height:100px   ;   border: 1px solid green; "> -->
+            <DIV class="爸爸1" style="    border: 1px solid green; ">
+                <img class="儿子1" style="max-width:50px;max-height:50px"
+                    src="https://t9.baidu.com/it/u=914542077,693953330&fm=218&app=126&size=f242,150&n=0&f=PNG?s=28B1E0124A722A9E889D6B8503007026&sec=1665853200&t=44ce390b3593199184ceb998fa7b42ee"">
+                <span class=" 儿子1"> 我的 </span>
+            </DIV>
+
+        </NAV>
+
+    </dl>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                msg: "我是小许",
+            },
+            methods: {
+                async 监听1() {
+                    let observer = new MutationObserver((mutationRecords) => {
+                        debugger;
+                        console.log(111, mutationRecords);
+                    });
+
+                    observer.observe(document.body, {
+                        attributes: true,
+                    });
+                }, //
+                async 监听2() {
+                    // 第一次修改，会入 mutationRecords 数组
+                    document.body.className = 'main';
+                    // // 第二次修改，会入 mutationRecords 数组
+                    // document.body.className = 'container';
+                    // // 第三次修改，会入 mutationRecords 数组
+                    // document.body.className = 'box';
+                }, //
+            }, //////
+            async mounted() { },
+        });
+    </script>
+</body>

@@ -1,0 +1,96 @@
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_call_猫()">按钮_call_猫</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_call_猫_狗()">按钮_call_猫_狗</el-button>
+    <br></br>
+
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    function 函数111() {
+      return "函数111"
+    }
+
+    function 函数sum111(a, b) {
+      return a + b
+    }
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_call_猫() {
+          function 函数111() {
+            console.log('111函数111=>:', this.name)
+            this.age = "age=>>666"
+          }
+
+          let 猫 = { name: "小猫" }
+          //call 1先调用函数    2再改变函数this 指向 
+          函数111.call(猫)
+          console.log('222猫=>:', 猫)
+          console.log('333猫.age=>:', 猫.age)
+
+        },
+
+
+
+        async 按钮_call_猫_狗() {
+
+          let 猫 = { name: "小喵" }
+          let 狗 = {
+            name: "旺财",
+            叫() {
+              console.log('叫=>:', this.name)
+            },
+            吃(食物1, 食物2) {
+              console.log('吃=>:', 食物1, 食物2)
+            }
+          }
+
+
+
+          //call 1先调用函数    2再改变函数this 指向 
+
+          // 狗.吃("骨头")
+          狗.吃.call(猫, "鱼", "猫粮")
+          狗.吃.apply(猫, ["鱼", "猫粮"])
+          let 函数result = 狗.吃.bind(猫, "鱼", "猫粮")
+          函数result()
+
+          // console.log('函数result=>111:', 函数result + "")
+        },
+
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

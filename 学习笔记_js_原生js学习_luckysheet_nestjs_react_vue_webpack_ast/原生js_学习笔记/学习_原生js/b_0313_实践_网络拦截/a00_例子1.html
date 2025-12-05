@@ -1,0 +1,79 @@
+<meta charset="UTF-8">
+<title>视频 https://cloud.tencent.com/developer/ask/224853
+</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_111_元素xhr()">方法_111_元素xhr</el-button>
+    <br></br>
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_222_网络请求()">方法_222_网络请求</el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    var obj = {}; let ppp = {}; let jq = $
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+        async 方法_111_元素xhr() {
+          var xhr = XMLHttpRequest.prototype;
+
+          var on_opn = xhr.open
+          var on_send = xhr.send
+
+
+          // xhr.opn = function (method, url) {
+          //   this._method = method;
+          //   this._url = url;
+          //   return open.apply(this, arguments);
+          // };
+
+
+          xhr.send = function name(data_send) {
+            console.log('111=>一:', 111)
+            this.addEventListener('load', function () {
+              console.log('发送的数据=>一:', data_send)
+
+              console.log("this", this)
+
+              console.log('response=>一:', this.response)
+
+            })
+            return on_send.apply(this, arguments);
+          }
+
+        },//-
+
+
+        async 方法_222_网络请求() {
+
+          let url = `http://120.25.224.61:9001/test_post`
+          let res = await axios.post(url, { aaa: 1, bbb: 2 })
+          console.log('test_post=>res:', res.data)
+
+        },//--
+
+      }
+    })
+  </script>
+</body>

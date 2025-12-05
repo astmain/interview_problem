@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }; let ppp = {}; let jq = $
+    let app = new Vue({
+      el: " #root ",
+      data: {},
+      methods: {
+        async 按钮_打印() {
+          var config = {
+            method: 'get',
+            url: 'https://127.0.0.1:7152/query/get?id=666',
+            headers: {
+              'authority': 'h5api.m.1688.com',
+              'pragma': 'no-cache',
+              'cache-control': 'no-cache',
+              'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
+              'accept': 'application/json',
+              'dnt': '1',
+              'content-type': 'application/x-www-form-urlencoded',
+              'sec-ch-ua-mobile': '?0',
+              'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+              'sec-ch-ua-platform': '"Windows"',
+              'origin': 'https://shop20d27424g9r61.1688.com',
+              'sec-fetch-site': 'same-site',
+              'sec-fetch-mode': 'cors',
+              'sec-fetch-dest': 'empty',
+              'referer': 'https://shop20d27424g9r61.1688.com/',
+              'accept-language': 'zh-CN,zh;q=0.9',
+              'cookie': 'cna=A4XUGtA8SnkCAXglpbh5p/5S; __last_loginid__=xm15394456110; ali_ab=110.81.12.28.1654503296788.3; lid=xm15394456110; ali_apache_track=c_mid=b2b-2051446779|c_lid=xm15394456110|c_ms=1; keywordsHistory=%E7%94%B7%E9%9E%8B; xlly_s=1; alicnweb=touch_tb_at%3D1656943419988%7Clastlogonid%3Dxm15394456110; _m_h5_tk=36bdaaba5628c413d40d46886c163a67_1656994374953; _m_h5_tk_enc=aa3441fd09d6673f6ee60c60a231cc86; cookie2=2ff067b0cdf643a9b8ff48f2f0de3122; sgcookie=E1001tQNuliBKxj3cUeCknbBl9zK3asmXHkmNA5Kl5pzVZdlCqddoIO%2BE2Kjs9QA%2F1tohi64c9czJP2uz%2BXzJntzrOJMN%2BDod4%2FZtANqLz9vDO7gNKMwZPI1PcR9p2rKDLMG; t=999efc395cd20fc97df6b103d16662b4; _tb_token_=6383311f588b; uc4=id4=0%40U2o29mMFLd2uDDZ8xQp4BSAelAq6&nk4=0%40GT7HTukwpsdbpgkmsHNFV5n4OA%2BGbnz1; __cn_logon__=false; _csrf_token=1656990477865; tfstk=chdfBRXmyoqjME4rA1gr3HbPVSXOaaUC5xsDl0CJH3zshSYf2sYTTMOnedqO_NQ5.; l=eBM26llILAairBsaBO5wlurza77OoIdf1sPzaNbMiInca6thdHVepNCHilIJfdtjgtfcTetrRRzQkRhM85ag7EZ_bKlKT0tNi196-; isg=BDEx_ckU9wMUa1tMqB307WenQL3LHqWQD_UT-xNHrfg-OlKMW29BY_AcXM5c8j3I'
+            },
+            data: 1111
+          };
+
+
+
+
+
+          // let config = { method: 'get', url: 'https://127.0.0.1:7152/query/get?id=666' }
+          let res = await axios(config)
+          console.log('111>res:', res)
+          console.log('222>res.data:', res.data)
+        },// ---
+
+
+      }
+    })
+  </script>
+</body>

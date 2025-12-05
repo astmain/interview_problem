@@ -1,0 +1,117 @@
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</title>
+<title>视频 https://www.bilibili.com/video/BV1kr4y1m7P9?spm_id_from=333.999.0.0</title>
+<script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_Set()">按钮_Set</el-button>
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_Set222()">按钮_Set222</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_Set_next()">按钮_Set_next</el-button>
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }
+    let ppp = {}
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+
+        async 按钮_Set() {
+          let _s = new Set();
+          [111, 111, 2, 2, 3, 4, 5].forEach(element => {
+            _s.add(element)
+            let o = { a: 1, b: 2 };
+            _s.add(o);
+          });
+
+
+          for (const item of _s) {
+            console.log('item=>111:', item)
+          }
+
+          // 按顺序输出：1, "some text", {"a": 1, "b": 2}, {"a": 1, "b": 2}
+          _s.add({ "a": 1, "b": 2 })
+          _s.add({ "a": 1, "b": 2 })
+
+
+          console.log('values--------------------=>111:')
+          for (let item of _s.values()) console.log(item);
+
+
+        },
+
+        async 按钮_Set222() {
+          let _s = new Set();
+          _s.add({ "a": 1, "b": 2 })
+          _s.add({ "a": 1, "b": 2 })
+
+
+          console.log('_s=>111:', _s)
+          // [[Entries]]
+          // 0: Object
+          // 1: Object
+          // size: 2
+          // __proto__: Set
+
+
+          console.log('values=>111:', _s.values())
+          console.log('keys=>111:', _s.keys())
+          console.log('values--------------------=>111:')
+          for (const aaa of _s) {
+            console.log('aaa=>111:', aaa)
+          }
+
+
+        },
+
+        async 按钮_Set_next() {
+          const set1 = new Set();
+          set1.add(111);
+          set1.add('forty two');
+
+          const iterator1 = set1.values();
+
+          console.log(iterator1.next().value);
+          // expected output: 42
+
+          console.log(iterator1.next().value);
+          // expected output: "forty two"
+
+
+        },
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

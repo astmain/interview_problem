@@ -1,0 +1,139 @@
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</title>
+<title>视频 https://www.bilibili.com/video/BV1su411X7Lr?spm_id_from=333.999.0.0</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_apply()">按钮_apply</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_apply_应用()">按钮_apply_应用</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_arguments()">按钮_arguments</el-button>
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_apply_应用_函数sum111()">按钮_apply_应用_函数sum111</el-button>
+
+
+
+    <div v-for="(item) in 10">
+      {{item}}
+    </div>
+
+
+
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    function 函数111() {
+      return "函数111"
+    }
+
+    function 函数sum111(a, b) {
+      return a + b
+    }
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+        async 按钮_apply() {
+
+
+
+          const ppp = new Proxy(函数111, {
+
+            apply(target, thisArg, argumentsLis) {
+              console.log('apply=>target:', target)
+              console.log('apply=>thisArg:', thisArg)
+              console.log('apply=>argumentsLis:', argumentsLis)
+
+              return "apply222"
+            },
+          })//ppp
+          console.log('ppp=>111:', ppp)
+          console.log('ppp()=>111:', ppp())
+
+        },
+
+
+        async 按钮_apply_应用() {
+          const ppp = new Proxy(函数111, {
+
+            apply(target, thisArg, argumentsLis) {
+              console.log('111apply=>target:', target)
+              console.log('222apply=>thisArg:', thisArg)
+              console.log('333apply=>argumentsLis:', argumentsLis)
+
+              return "apply222"
+            },
+          })//ppp
+          // console.log('ppp=>111:', ppp)
+          函数111()
+          // console.log('函数111()=>111:', 函数111())
+          // console.log('ppp()=>111:', ppp())
+
+        },
+
+        async 按钮_arguments() {
+          function 函数arguments() {
+            console.log('arguments=>111:', arguments)
+
+            console.log('...=>111:', { ...arguments })
+          }
+
+          函数arguments(111, 222)
+          // 类数组对象
+          // callee: ƒ 函数arguments()
+          // length: 0
+          // Symbol(Symbol.iterator): ƒ values()
+          // __proto__: Object
+
+
+        },
+
+        async 按钮_apply_应用_函数sum111() {
+          const ppp = new Proxy(函数sum111, {
+            apply(target, thisArg, argumentsLis) {
+              console.log(`Calculate00000000 sum:`);
+              console.log('111apply=>target:', target)
+              console.log('222apply=>thisArg:', thisArg)//目标对象的上下问对象(this)
+              console.log('333apply=>argumentsLis:', argumentsLis)
+
+              return target
+            },
+          })//ppp
+          // console.log('ppp=>111:', ppp)
+          ppp(1, 2)
+          // console.log('函数111()=>111:', 函数111())
+          console.log('ppp()=>111:', ppp(1, 2))
+
+        },
+
+
+
+
+
+
+
+
+      }
+    })
+  </script>
+</body>

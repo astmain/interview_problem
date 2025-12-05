@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>视频 https://www.bilibili.com/video/BV18L4y1t7is?spm_id_from=333.337.search-card.all.click</title>
+  <title>文档 https://www.bilibili.com/video/BV18L4y1t7is?spm_id_from=333.337.search-card.all.click</title>
+  <script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <DD id="root">
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_apply()">按钮_apply</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: "文字111", b: "文字222" }
+    let ppp = {}
+    let ppp111 = {}
+    function 循环判断素数(num) {
+      console.time('时间aaa')
+      if (num < 2) { let 结束222 = console.timeEnd('时间aaa'); return }
+
+      for (let index = 0; index < num; index++) {
+        if (num % 2 === 0) { lconsole.timeEnd('时间aaa'); return false }
+        else { console.timeEnd('时间aaa'); return true }
+      }
+
+
+    }
+    // ----------------------------------------
+
+
+
+
+
+
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+
+        async 按钮_apply() {
+          ppp = new Proxy(循环判断素数, {
+            apply: (target, thisarg, args) => {
+              console.log('apply.............................',)
+              console.log('apply=>target:111', target)
+              console.log('apply=>thisarg:222', thisarg)
+              console.log('apply=>args:333,传递的值', args)
+
+              let 开始111 = console.time('时间')
+
+              let result = target.apply(thisarg, args)
+              console.log('apply=>result:444', result)
+              let 结束222 = console.timeEnd('时间')
+              return result
+            }
+
+          })
+
+
+
+          // console.log('ppp=>结果:111', ppp(6566 * 6666 * 1325546 * 45554555))
+          console.log('ppp=>结果:111', ppp(666))
+
+
+
+        },
+
+
+        async 按钮_打印() {
+
+          console.log('目标=>obj:111', obj)
+
+        },
+
+
+      }
+    })
+  </script>
+</body>

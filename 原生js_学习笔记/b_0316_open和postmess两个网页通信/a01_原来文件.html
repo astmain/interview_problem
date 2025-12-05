@@ -1,0 +1,113 @@
+<meta charset="UTF-8">
+<title>文档 https://blog.csdn.net/cold_Blooder/article/details/119417682</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+<style>
+  .颜色 {
+    background: red;
+  }
+</style>
+
+<body>
+  <DL id="root">
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+    <el-button type="primary" size="mini" @click="打开网页()">打开网页</el-button>
+    <el-button type="primary" size="mini" @click="发送消息()">发送消息</el-button>
+
+
+
+
+
+  </DL>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }; let ppp = {}; let jq = $
+    let app = new Vue({
+      el: " #root ",
+      data: {
+        wind_窗口1: {}
+      },
+      methods: {
+        async 按钮_打印() {
+
+        },////
+
+
+        async 打开网页() {
+          var url = "https://yingxiao.pinduoduo.com/marketing/main/report/search/overView";
+          // 样式
+          var sFeatures = "dialogWidth:490px;dialogHeight:310px;scroll:no;status:no;";
+          // 参数
+          var arg = new Object();
+          arg.id = "1";
+          arg.name = "zhangsan";
+
+          // 打开子窗口
+          this.wind_窗口1 = window.open(url, "vArguments", sFeatures);
+
+          // 监听到子页面的message消息后，向子页面发送参数（子窗口打开后，会向当前窗口发送message消息，当前窗口监听到子窗口发送的消息后，向子窗口发消息）
+          // window.addEventListener('message', function (e) {
+          //   window.popupwin.postMessage({ type: 'message', 'vArguments': vArguments }, '*');
+          // })
+        },////
+
+        async 发送消息() {
+          let 函数 = function () {
+            console.log('我执行了>code:run')
+            return "我执行了>code:run"
+          }
+          let mess = {
+            arr: [
+              { name: `张三`, age: `20`, public_key: 111111, job: `IT工程师`, },
+              { name: `李四`, age: `24`, public_key: 222222, job: `银行职员`, },
+              { name: `王五`, age: `28`, public_key: 333333, job: `教师`, },
+            ],
+            check: { aaa: 111 },
+            code: 函数,
+            run: "console.log('我执行了>run:')"
+          }
+
+          // this.wind_窗口1.postMessage({ type: 'message', 'vArguments': 111 }, '*')
+          this.wind_窗口1.postMessage({ sender: "窗口111", mess: JSON.stringify(mess) }, '*')
+          // this.wind_窗口1.postMessage({ sender: "窗口111", mess: mess }, '*')
+          // this.wind_窗口1.postMessage({ mess }, '*')
+
+        },////
+
+        async on_监听消息() {
+          console.error('开始>on_监听消息:')
+          window.addEventListener('message', function (e) {
+            console.log('监听>:', e.data)
+          })
+        },////
+
+
+
+        async 网页222() {
+          window.addEventListener('message', function (e) {  // 监听 message 事件
+            console.log("222", e.data)
+            window.opener.postMessage({ type: 'start', 'message': 'start' }, '*')
+
+          });
+
+
+        },////
+
+
+
+
+      },//////
+      async mounted() {
+        await this.on_监听消息()
+      },
+    })
+
+  </script>
+</body>

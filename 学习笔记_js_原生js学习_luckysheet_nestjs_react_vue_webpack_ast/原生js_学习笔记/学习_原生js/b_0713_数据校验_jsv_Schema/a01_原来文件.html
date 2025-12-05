@@ -1,0 +1,60 @@
+<meta charset="UTF-8" />
+<title>
+    javascript参数校验(json-schema/ajv) 
+    https://www.jianshu.com/p/6a07728f9de9
+    https://blog.csdn.net/mengshang529/article/details/106067832/
+</title>
+<title>官网 https://study.miaov.com/study/show/chapter/36</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" type="text/css" rel="stylesheet" />
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="axios" src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+<!-- <script class="迅雷下载" src="http://open.thunderurl.com/thunder-link.js"></script> -->
+<!-- <script class="函数延迟" src="../函数延迟.js"></script> -->
+
+<script src="https://raw.github.com/garycourt/JSV/master/lib/uri/uri.js" type="text/javascript"></script>
+<script src="https://raw.github.com/garycourt/JSV/master/lib/jsv.js" type="text/javascript"></script>
+<script src="https://raw.github.com/garycourt/JSV/master/lib/json-schema-draft-03.js" type="text/javascript"></script>
+
+
+<style></style>
+
+<body>
+    <dl id="root">
+        <el-button type="primary" size="default" @click="监听1()">监听1</el-button>
+        <el-button type="primary" size="default" @click="监听2()">监听2</el-button>
+    </dl>
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <script>
+        let app = new Vue({
+            el: " #root ",
+            data: {
+                msg: "我是小许",
+            },
+            methods: {
+                async 监听1() {
+                    let observer = new MutationObserver((mutationRecords) => {
+                        debugger;
+                        console.log(111, mutationRecords);
+                    });
+
+                    observer.observe(document.body, {
+                        attributes: true,
+                    });
+                }, //
+                async 监听2() {
+                    // 第一次修改，会入 mutationRecords 数组
+                    document.body.className = 'main';
+                    // // 第二次修改，会入 mutationRecords 数组
+                    // document.body.className = 'container';
+                    // // 第三次修改，会入 mutationRecords 数组
+                    // document.body.className = 'box';
+                }, //
+            }, //////
+            async mounted() { },
+        });
+    </script>
+</body>

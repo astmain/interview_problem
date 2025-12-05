@@ -1,0 +1,137 @@
+<meta charset="UTF-8">
+<title>https://www.bilibili.com/video/BV1XX4y1w7R6?spm_id_from=333.880.my_history.page.click</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script class="函数延迟" src="../函数延迟.js"></script>
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="方法_111_xhr_call()">方法_111_xhr_call</el-button>
+    <el-button type="primary" size="mini" @click="方法_111_xhr_apply()">方法_111_xhr_apply</el-button>
+    <el-button type="primary" size="mini" @click="方法_111_xhr_bind()">方法_111_xhr_bind</el-button>
+
+    <br></br>
+
+
+
+    <el-button type="primary" size="mini" @click="方法_222_网络请求()">方法_222_网络请求</el-button>
+    <br></br>
+    <el-button type="primary" size="mini" @click="例子_call_apply_bind_可以调用函数_改变this()">例子_call_apply_bind_可以调用函数_改变this
+    </el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    var obj = {}; let ppp = {}; let jq = $
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+        async 方法_111_xhr_call() {
+
+          //保存 老函数
+          var on_send = XMLHttpRequest.prototype.send
+          // 修改了      老函数              新函数                          
+          XMLHttpRequest.prototype.send = function (data_send) {
+ 
+        
+            this.addEventListener('load', function () {
+        
+              console.log('this=>一:', this)
+              console.error('response=>一:', this.response)
+
+            })
+
+
+            // 新函数 返回return   使用  老函数  
+            let aaa_call = on_send.call(this, [...arguments])
+            console.log('aaa_call=>一:', aaa_call)
+
+
+     
+
+            return aaa_call
+          }
+
+        },//-
+
+
+        async 方法_111_xhr_apply() {
+          var xhr_old = XMLHttpRequest.prototype;
+          var on_opn = xhr_old.open
+          var on_send = xhr_old.send
+          xhr_old.send = function (data_send) {
+            this.addEventListener('load', function () {
+              // console.log('发送的数据=>一:', data_send)
+              // console.log("this", this)
+              console.error('response=>一:', this.response)
+
+            })
+
+            let aaa_apply = on_send.apply(this, arguments)
+            console.log('aaa_apply=>一:', aaa_apply)
+
+            return aaa_apply
+          }
+
+        },//-
+
+        async 方法_111_xhr_bind() {
+          var xhr_old = XMLHttpRequest.prototype;
+          var on_opn = xhr_old.open
+          var on_send = xhr_old.send
+          xhr_old.send = function (data_send) {
+            this.addEventListener('load', function () {
+              // console.log('发送的数据=>一:', data_send)
+              // console.log("this", this)
+              console.error('response=>一:', this.response)
+
+            })
+
+            let aaa_bind = on_send.bind(this, [...arguments])
+            console.log('aaa_bind=>一:', aaa_bind)
+            let res_bind = aaa_bind()
+
+            return res_bind
+          }
+
+        },//-
+
+
+        async 方法_222_网络请求() {
+          let url = `http://120.25.224.61:9001/test_post`
+          let res = await axios.post(url, { aaa: 1, bbb: 2 })
+          console.log('test_post=>res:', res.data)
+
+        },//--
+
+
+        async 例子_call_apply_bind_可以调用函数_改变this() {
+          let 猫 = { name: "猫猫" }
+          function 函数(xxx, yyy) {
+            console.log('函数=>this:', this)
+            console.log('函数=>xxx:yyy', xxx, yyy)
+          }
+          函数.call(猫, "鱼", "猫食")// 传参     "鱼","猫食"    依次传递
+          函数.apply(猫, ["鱼", "猫食"])// 传参  ["鱼","猫食"] 数组传递
+          let 函数bind = 函数.bind(猫, "鱼", "猫食")// 传参  ["鱼","猫食"] 数组传递
+          函数bind()
+        },//--
+
+      }
+    })
+  </script>
+</body>

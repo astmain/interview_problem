@@ -1,0 +1,129 @@
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</title>
+<script class="jq" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- <script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_apply()">按钮_apply</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_construct()">按钮_construct</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_get()">按钮_get</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_set()">按钮_set</el-button>
+
+    <br></br>
+    <el-button type="primary" size="mini" @click="按钮_deleteProperty()">按钮_deleteProperty</el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { aaa: 111, aaa: 222 }
+    let ppp = {}
+
+
+    let app = new Vue({
+      el: " #root ", data: {}, methods: {
+
+
+        async 按钮_apply() {
+          function 函数(a, b, c) {
+            return this.aaa + a + b + c
+          }
+          // 通过指定的参数列表发起对目标(target)函数的调用。
+          console.log('函数.apply=>111:', 函数.apply(obj, [1, 2, 3]))
+          console.log('Reflect.apply=>222:', Reflect.apply(函数, obj, [111, 222, 333]))
+          console.log('函数=>333:', 函数(1, 2, 3))
+        },
+
+        async 按钮_construct() {
+          function Person(name, age) {
+            this.name = name
+            this.age = age
+          }
+          let p1 = new Person("小许", 30)
+          console.log('p1=>111:', p1)
+
+
+          var p2 = Reflect.construct(Person, ["小陈", 18]);
+          console.log('p2=>222:', p2)
+        },
+
+
+
+        async 按钮_get() {
+          // Reflect.get(target, propertyKey[, receiver])
+          let OBJ = {
+            name: "小许", age: 30,
+            get info() {
+              console.log('OBJ_=>this:', this)
+              return `我是info=>${this.name},${this.age}`
+            }
+          }
+          console.log('get=>name:', Reflect.get(OBJ, "name"))
+          console.log('get=>age:', Reflect.get(OBJ, "age"))
+          console.log('get=>info:', Reflect.get(OBJ, "info"))
+          console.log('get=>sex:', Reflect.get(OBJ, "sex"))
+
+          // Reflect.get(target, propertyKey[, receiver])
+          // 如果target对象中指定了getter，receiver则为getter调用时的this值。
+          let OBJ222 = { name: "OBJ222小陈", age: "OBJ222年龄20", }
+          console.log('OBJ222=>info:', Reflect.get(OBJ, "info", OBJ222))
+
+        },
+
+        async 按钮_set() {
+          // Reflect.set(target, propertyKey, value[, receiver])
+          let OBJ = {
+            name: "小许", age: 111,
+            set info(value) {
+              console.log('OBJ=>set:this', this)
+              console.log('OBJ_=>set:value', value)
+              return this.name = value
+            }
+          }
+          console.log('set=>111:', Reflect.set(OBJ, "name", "1111111"))
+          console.log('set=>222:', OBJ)
+
+
+          OBJ222 = { name: "小许222", age: 222, }
+          console.log('set=>333:', Reflect.set(OBJ, "name", "2222222", OBJ222))
+          console.log('set=>444:', OBJ222)
+        },
+
+        async 按钮_deleteProperty() {
+          // Reflect.deleteProperty(target, propertyKey)
+          // value: 1, //值
+          // writable: true,//是否可写
+          // enumerable: true, //是否可 历 forin
+          // configurable: true// 是否可改写
+
+          Reflect.defineProperty(obj, 'aaa', {
+            value: 123, //值
+            writable: false,//是否可写
+            enumerable: false, //是否可 历 forin
+            configurable: false// 是否可改写
+          })  // true
+
+          let res = Reflect.deleteProperty(obj, "aaa"); // true
+          console.log('111=>res:', res)
+          console.log('222=>OBJ:', obj)
+        },
+
+
+        //# --------------------------------------------------------------------
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+<title>文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</title>
+<script class="jq" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script class="vue" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script class="element" src="https://unpkg.com/element-ui/lib/index.js"></script>
+<link class="element" rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script class="axios" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<body>
+  <DD id="root">
+
+
+    <br></br>
+
+    <el-button type="primary" size="mini" @click="按钮_打印()">按钮_打印</el-button>
+
+
+
+  </DD>
+  <!-- -------------------------------------------------------------------------------------------------- -->
+  <script>
+    let obj = { a: 111, b: 222 }
+    let ppp = {}
+
+
+    let app = new Vue({
+      el: " #root ",
+      data: {
+
+      },
+      methods: {
+
+
+        async 按钮_打印() {
+          // ==UserScript==
+          // @name         拼多多商家_商品趋势_cookie
+          // @namespace    http://tampermonkey.net/
+          // @version      0.1
+          // @description  try to take over the world!
+          // @author       You
+          // @match        https://mms.pinduoduo.com/sycm/goods_effect/detail
+          // @icon         https://img.pddpic.com/gaudit-image/2021-08-27/29c2f87c418155c52420219a38efb4c8.jpeg
+          // @grant        none
+          // ==/UserScript==
+
+          (function () {
+            //     'use strict';
+
+            // Your code here...
+            console.error("拼多多商家_商品趋势_cookie", 111);
+
+            let aaa = ""
+
+            Object.defineProperty(document, 'cookie', {
+              set: function (val) {
+                console.log('拼多多商家_商品趋势_cookie:Hook捕获到选中设置->', val);
+                aaa = val
+                if (val.indexOf("_nano_fp") != -1) {
+                  debugger
+                }
+
+                return val;
+              },
+              get: function () {
+                return aaa;
+              },
+
+
+            })
+
+
+          })();
+        },
+
+
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,455 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages,
+		
+		
+		{
+			"path": "pages/my/login",
+			"style": {
+				"navigationBarTitleText": "登录页",
+				"navigationBarBackgroundColor": "#52cdd9",
+				"h5": {
+					"titleNView": false
+				},
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/my/gestureLock",
+			"style": {
+				
+			}
+		},
+		{
+		    "path" : "pages/my/preview",
+		    "style" : {}
+		},
+		{
+			"path": "pages/my/reg",
+			"style": {
+				"navigationBarTitleText": "注册页",
+				"navigationBarBackgroundColor": "#52cdd9",
+				"h5": {
+					"titleNView": false
+				},
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "智能OA",
+				"h5": {
+					"titleNView": false
+				},
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/my/userinfo",
+			"style": {
+				"navigationBarTitleText": "帐号信息"
+			}
+		},
+		{
+			"path": "pages/zhiban/index",
+			"style": {
+				"navigationBarTitleText": "值班信息"
+			}
+		},
+		{
+			"path": "pages/my/modifyPwd",
+			"style": {
+				"navigationBarTitleText": "密码修改"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的个人页"
+			}
+		},
+		
+		{
+			"path": "pages/jb/jbManage",
+			"style": {
+				"navigationBarTitleText": "通用流程",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/jb/jbDetail",
+			"style": {
+				"navigationBarTitleText": "通用流程信息"
+			}
+		},
+		{
+			"path": "pages/jb/jbAll",
+			"style": {
+				"navigationBarTitleText": "所有通用流程"
+			}
+		},
+		{
+			"path": "pages/sw/swManage",
+			"style": {
+				"navigationBarTitleText": "公文",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sw/swManage2",
+			"style": {
+				"navigationBarTitleText": "公文2"
+			}
+		},
+		{
+			"path": "pages/sw/allSw",
+			"style": {
+				"navigationBarTitleText": "所有公文",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/wj/allWj",
+			"style": {
+				"navigationBarTitleText": "所有文件",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/fw/fwManage",
+			"style": {
+				"navigationBarTitleText": "发文",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/fw/allFw",
+			"style": {
+				"navigationBarTitleText": "所有发文",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/wj/wjDetail",
+			"style": {
+				"navigationBarTitleText": "文件详情"
+			}
+		},
+		{
+			"path": "pages/jy/jyManage",
+			"style": {
+				"navigationBarTitleText": "借阅审批",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sw/swDetail",
+			"style": {
+				"navigationBarTitleText": "公文处理"
+			}
+		},
+		{
+			"path": "pages/fw/fwDetail",
+			"style": {
+				"navigationBarTitleText": "发文处理"
+			}
+		},
+		{
+			"path": "pages/sys/flowData",
+			"style": {
+				"navigationBarTitleText": "流程查看"
+			}
+		},
+		{
+			"path": "pages/sys/userSelect",
+			"style": {
+				"navigationBarTitleText": "用户选择"
+			}
+		},
+		{
+			"path": "pages/sys/notice/list",
+			"style": {
+				"navigationBarTitleText": "公告",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sys/notice/detail",
+			"style": {
+				"navigationBarTitleText": "公告内容"
+			}
+		},
+		{
+			"path": "pages/sys/addressList",
+			"style": {
+				"navigationBarTitleText": "通讯录"
+			}
+		},
+		{
+			"path": "pages/sys/updateVer",
+			"style": {
+				"navigationBarTitleText": "系统更新"
+			}
+		},
+		{
+			"path": "pages/sys/dutyNotice",
+			"style": {
+				"navigationBarTitleText": "值班公告"
+			}
+		},
+		{
+			"path": "pages/sq/sqManage",
+			"style": {
+				"navigationBarTitleText": "申请流程",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sq/allSq",
+			"style": {
+				"navigationBarTitleText": "全部申请",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sq/gwcDetail",
+			"style": {
+				"navigationBarTitleText": "用车申请"
+			}
+		},
+		{
+			"path": "pages/sq/gwbbDetail",
+			"style": {
+				"navigationBarTitleText": "公务报备"
+			}
+		},
+		{
+			"path": "pages/sq/tysqDetail",
+			"style": {
+				"navigationBarTitleText": "通用申请"
+			}
+		},
+		{
+			"path": "pages/sq/hysqDetail",
+			"style": {
+				"navigationBarTitleText": "会议申请"
+			}
+		},
+		{
+			"path": "pages/sq/leaveDetail",
+			"style": {
+				"navigationBarTitleText": "请假申请"
+			}
+		},
+		{
+			"path": "pages/meeting/meetingManage",
+			"style": {
+				"navigationBarTitleText": "会议管理"
+			}
+		},
+		{
+			"path": "pages/meeting/dayPlanManage",
+			"style": {
+				"navigationBarTitleText": "议程管理"
+			}
+		},
+		{
+			"path": "pages/meeting/meetingFile",
+			"style": {
+				"navigationBarTitleText": "会议文件"
+			}
+		},
+		{
+			"path": "pages/shared/list",
+			"style": {
+				"navigationBarTitleText": "文件共享",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/sharedx/list",
+			"style": {
+				"navigationBarTitleText": "全部文件",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/huiyishi/my-list",
+			"style": {
+				"navigationBarTitleText": "我的会议",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/huiyishi/huiyi-list",
+			"style": {
+				"navigationBarTitleText": "会议列表",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/huiyishi/yiti-list",
+			"style": {
+				"navigationBarTitleText": "议题列表",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/huiyishi/huiyiDetail",
+			"style": {
+				"navigationBarTitleText": "会议详情"
+			}
+		}, 
+		{
+			"path": "pages/huiyishi/yitiDetail",
+			"style": {
+				"navigationBarTitleText": "议题详情"
+			}
+		}, 
+		{
+			"path": "pages/youjian/youjian-list",
+			"style": {
+				"navigationBarTitleText": "邮件",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/youjian/youjian-add",
+			"style": {
+				"navigationBarTitleText": "发送邮件"
+			}
+		}, 
+		{
+			"path": "pages/youjian/youjian-detail",
+			"style": {
+				"navigationBarTitleText": "邮件详情"
+			}
+		}, 
+		{
+			"path": "pages/sms/sms-add",
+			"style": {
+				"navigationBarTitleText": "发送短信"
+			}
+		}, 
+		{
+			"path": "pages/sharedx/dirSelectList",
+			"style": {
+				"navigationBarTitleText": "选择目录",
+				"enablePullDownRefresh": true
+			}
+		}, 
+		{
+			"path": "pages/sharedx/category",
+			"style": {
+				"navigationBarTitleText": "文件共享"
+			}
+		},
+		
+		{
+			"path": "pages/sign-daily/list",
+			"style": {
+				"navigationBarTitleText": "签到记录"
+			}
+		}
+       
+        ,{
+            "path" : "pages/sys/notice/detail2",
+            "style" : {}
+        },
+       
+		{
+		    "path" : "pages/zzgj/zzgjManage",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "发文稿件",
+		        "enablePullDownRefresh": true
+		    }
+		    
+		}
+		,{
+		    "path" : "pages/zzgj/zzgjDetail",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "稿件查看",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		,{
+		    "path" : "pages/zzgj/allzzgj",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "所有稿件",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "慧联",
+		"navigationBarBackgroundColor": "#1d96f0",
+		"backgroundColor": "#FFFFFF",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#cbcbcb",
+		"selectedColor": "#FFFFFF",
+		"borderStyle": "white",
+		"backgroundColor": "#2a92db",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home_active.png",
+				"text": "主页"
+			},
+			// {
+			// 	"pagePath": "pages/timchat/charlist",
+			// 	"iconPath": "static/home.png",
+			// 	"selectedIconPath": "static/home_active.png",
+			// 	"text": "消息"
+			// },
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/set-user.png",
+				"selectedIconPath": "static/set-user-active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": {
+		"current": 0,
+		"list": [
+
+			{
+				"name": "forNormal",
+				"path": "pages/my/login",
+				"query": ""
+			},
+			{
+				"name": "forTest",
+				"path": "pages/sq/sqManage",
+				"query": "Flag=add"
+			},
+			{
+				"name": "主页",
+				"path": "pages/home/index"
+			},
+			
+			{
+				"name": "文件共享",
+				"path": "pages/sharedx/list"
+			}
+		]
+	}
+}
